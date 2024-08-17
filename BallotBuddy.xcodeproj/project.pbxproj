@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454102C71044A00E263AC /* BallotBuddyApp.swift */; };
+		6FC454132C71044A00E263AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454122C71044A00E263AC /* ContentView.swift */; };
+		6FC454152C71044C00E263AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454142C71044C00E263AC /* Assets.xcassets */; };
+		6FC454182C71044C00E263AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454172C71044C00E263AC /* Preview Assets.xcassets */; };
+		6FC454222C71044C00E263AC /* BallotBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454212C71044C00E263AC /* BallotBuddyTests.swift */; };
+		6FC4542C2C71044C00E263AC /* BallotBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4542B2C71044C00E263AC /* BallotBuddyUITests.swift */; };
+		6FC4542E2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6FC4541E2C71044C00E263AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FC454052C71044A00E263AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FC4540C2C71044A00E263AC;
+			remoteInfo = BallotBuddy;
+		};
+		6FC454282C71044C00E263AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6FC454052C71044A00E263AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FC4540C2C71044A00E263AC;
+			remoteInfo = BallotBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6FC4540D2C71044A00E263AC /* BallotBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallotBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC454102C71044A00E263AC /* BallotBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyApp.swift; sourceTree = "<group>"; };
+		6FC454122C71044A00E263AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6FC454142C71044C00E263AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6FC454172C71044C00E263AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6FC4541D2C71044C00E263AC /* BallotBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BallotBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC454212C71044C00E263AC /* BallotBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyTests.swift; sourceTree = "<group>"; };
+		6FC454272C71044C00E263AC /* BallotBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BallotBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC4542B2C71044C00E263AC /* BallotBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyUITests.swift; sourceTree = "<group>"; };
+		6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6FC4540A2C71044A00E263AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC4541A2C71044C00E263AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC454242C71044C00E263AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6FC454042C71044900E263AC = {
+			isa = PBXGroup;
+			children = (
+				6FC4540F2C71044A00E263AC /* BallotBuddy */,
+				6FC454202C71044C00E263AC /* BallotBuddyTests */,
+				6FC4542A2C71044C00E263AC /* BallotBuddyUITests */,
+				6FC4540E2C71044A00E263AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6FC4540E2C71044A00E263AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6FC4540D2C71044A00E263AC /* BallotBuddy.app */,
+				6FC4541D2C71044C00E263AC /* BallotBuddyTests.xctest */,
+				6FC454272C71044C00E263AC /* BallotBuddyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6FC4540F2C71044A00E263AC /* BallotBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				6FC454102C71044A00E263AC /* BallotBuddyApp.swift */,
+				6FC454122C71044A00E263AC /* ContentView.swift */,
+				6FC454142C71044C00E263AC /* Assets.xcassets */,
+				6FC454162C71044C00E263AC /* Preview Content */,
+			);
+			path = BallotBuddy;
+			sourceTree = "<group>";
+		};
+		6FC454162C71044C00E263AC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6FC454172C71044C00E263AC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6FC454202C71044C00E263AC /* BallotBuddyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6FC454212C71044C00E263AC /* BallotBuddyTests.swift */,
+			);
+			path = BallotBuddyTests;
+			sourceTree = "<group>";
+		};
+		6FC4542A2C71044C00E263AC /* BallotBuddyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6FC4542B2C71044C00E263AC /* BallotBuddyUITests.swift */,
+				6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */,
+			);
+			path = BallotBuddyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FC4540C2C71044A00E263AC /* BallotBuddy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FC454312C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddy" */;
+			buildPhases = (
+				6FC454092C71044A00E263AC /* Sources */,
+				6FC4540A2C71044A00E263AC /* Frameworks */,
+				6FC4540B2C71044A00E263AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BallotBuddy;
+			productName = BallotBuddy;
+			productReference = 6FC4540D2C71044A00E263AC /* BallotBuddy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6FC4541C2C71044C00E263AC /* BallotBuddyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FC454342C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddyTests" */;
+			buildPhases = (
+				6FC454192C71044C00E263AC /* Sources */,
+				6FC4541A2C71044C00E263AC /* Frameworks */,
+				6FC4541B2C71044C00E263AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FC4541F2C71044C00E263AC /* PBXTargetDependency */,
+			);
+			name = BallotBuddyTests;
+			productName = BallotBuddyTests;
+			productReference = 6FC4541D2C71044C00E263AC /* BallotBuddyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6FC454262C71044C00E263AC /* BallotBuddyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FC454372C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddyUITests" */;
+			buildPhases = (
+				6FC454232C71044C00E263AC /* Sources */,
+				6FC454242C71044C00E263AC /* Frameworks */,
+				6FC454252C71044C00E263AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FC454292C71044C00E263AC /* PBXTargetDependency */,
+			);
+			name = BallotBuddyUITests;
+			productName = BallotBuddyUITests;
+			productReference = 6FC454272C71044C00E263AC /* BallotBuddyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6FC454052C71044A00E263AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					6FC4540C2C71044A00E263AC = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					6FC4541C2C71044C00E263AC = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 6FC4540C2C71044A00E263AC;
+					};
+					6FC454262C71044C00E263AC = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 6FC4540C2C71044A00E263AC;
+					};
+				};
+			};
+			buildConfigurationList = 6FC454082C71044A00E263AC /* Build configuration list for PBXProject "BallotBuddy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6FC454042C71044900E263AC;
+			productRefGroup = 6FC4540E2C71044A00E263AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6FC4540C2C71044A00E263AC /* BallotBuddy */,
+				6FC4541C2C71044C00E263AC /* BallotBuddyTests */,
+				6FC454262C71044C00E263AC /* BallotBuddyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6FC4540B2C71044A00E263AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC454182C71044C00E263AC /* Preview Assets.xcassets in Resources */,
+				6FC454152C71044C00E263AC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC4541B2C71044C00E263AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC454252C71044C00E263AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6FC454092C71044A00E263AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC454132C71044A00E263AC /* ContentView.swift in Sources */,
+				6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC454192C71044C00E263AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC454222C71044C00E263AC /* BallotBuddyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FC454232C71044C00E263AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FC4542C2C71044C00E263AC /* BallotBuddyUITests.swift in Sources */,
+				6FC4542E2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6FC4541F2C71044C00E263AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FC4540C2C71044A00E263AC /* BallotBuddy */;
+			targetProxy = 6FC4541E2C71044C00E263AC /* PBXContainerItemProxy */;
+		};
+		6FC454292C71044C00E263AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FC4540C2C71044A00E263AC /* BallotBuddy */;
+			targetProxy = 6FC454282C71044C00E263AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6FC4542F2C71044C00E263AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6FC454302C71044C00E263AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FC454322C71044C00E263AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BallotBuddy/Preview Content\"";
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6FC454332C71044C00E263AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BallotBuddy/Preview Content\"";
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6FC454352C71044C00E263AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BallotBuddy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BallotBuddy";
+			};
+			name = Debug;
+		};
+		6FC454362C71044C00E263AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BallotBuddy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BallotBuddy";
+			};
+			name = Release;
+		};
+		6FC454382C71044C00E263AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BallotBuddy;
+			};
+			name = Debug;
+		};
+		6FC454392C71044C00E263AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H27U38L6YB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nonprofit.BallotBuddyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BallotBuddy;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FC454082C71044A00E263AC /* Build configuration list for PBXProject "BallotBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FC4542F2C71044C00E263AC /* Debug */,
+				6FC454302C71044C00E263AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FC454312C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FC454322C71044C00E263AC /* Debug */,
+				6FC454332C71044C00E263AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FC454342C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FC454352C71044C00E263AC /* Debug */,
+				6FC454362C71044C00E263AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FC454372C71044C00E263AC /* Build configuration list for PBXNativeTarget "BallotBuddyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FC454382C71044C00E263AC /* Debug */,
+				6FC454392C71044C00E263AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FC454052C71044A00E263AC /* Project object */;
+}
