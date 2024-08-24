@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6F16E96B2C79C501006E0968 /* MapMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16E96A2C79C501006E0968 /* MapMarkerView.swift */; };
+		6F517E462C7A364F00876772 /* PollingPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E452C7A364F00876772 /* PollingPlace.swift */; };
+		6F517E482C7A375400876772 /* PollingPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E472C7A375400876772 /* PollingPlaceView.swift */; };
+		6F517E4A2C7A381C00876772 /* PollUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E492C7A381C00876772 /* PollUIController.swift */; };
+		6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4B2C7A3C0700876772 /* ListView.swift */; };
+		6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4D2C7A3DD900876772 /* ListItemView.swift */; };
 		6FA0AD502C79ACC700933463 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0AD4F2C79ACC700933463 /* MapView.swift */; };
 		6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454102C71044A00E263AC /* BallotBuddyApp.swift */; };
 		6FC454132C71044A00E263AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454122C71044A00E263AC /* ContentView.swift */; };
@@ -39,6 +44,11 @@
 
 /* Begin PBXFileReference section */
 		6F16E96A2C79C501006E0968 /* MapMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerView.swift; sourceTree = "<group>"; };
+		6F517E452C7A364F00876772 /* PollingPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingPlace.swift; sourceTree = "<group>"; };
+		6F517E472C7A375400876772 /* PollingPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingPlaceView.swift; sourceTree = "<group>"; };
+		6F517E492C7A381C00876772 /* PollUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollUIController.swift; sourceTree = "<group>"; };
+		6F517E4B2C7A3C0700876772 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		6F517E4D2C7A3DD900876772 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		6FA0AD4F2C79ACC700933463 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6FC4540D2C71044A00E263AC /* BallotBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallotBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FC454102C71044A00E263AC /* BallotBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyApp.swift; sourceTree = "<group>"; };
@@ -107,7 +117,12 @@
 				6FFFE09C2C77A2BE00CB96AC /* User.swift */,
 				6FFFE09E2C77E82F00CB96AC /* TranslatedText.swift */,
 				6FA0AD4F2C79ACC700933463 /* MapView.swift */,
+				6F517E4B2C7A3C0700876772 /* ListView.swift */,
+				6F517E4D2C7A3DD900876772 /* ListItemView.swift */,
+				6F517E492C7A381C00876772 /* PollUIController.swift */,
+				6F517E452C7A364F00876772 /* PollingPlace.swift */,
 				6F16E96A2C79C501006E0968 /* MapMarkerView.swift */,
+				6F517E472C7A375400876772 /* PollingPlaceView.swift */,
 				6FC454142C71044C00E263AC /* Assets.xcassets */,
 				6FC454162C71044C00E263AC /* Preview Content */,
 			);
@@ -269,11 +284,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F517E4A2C7A381C00876772 /* PollUIController.swift in Sources */,
 				6FC454132C71044A00E263AC /* ContentView.swift in Sources */,
+				6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */,
+				6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */,
 				6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */,
 				6FA0AD502C79ACC700933463 /* MapView.swift in Sources */,
+				6F517E462C7A364F00876772 /* PollingPlace.swift in Sources */,
 				6FFFE09F2C77E82F00CB96AC /* TranslatedText.swift in Sources */,
 				6FFFE09D2C77A2BE00CB96AC /* User.swift in Sources */,
+				6F517E482C7A375400876772 /* PollingPlaceView.swift in Sources */,
 				6F16E96B2C79C501006E0968 /* MapMarkerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

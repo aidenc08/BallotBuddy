@@ -40,5 +40,5 @@ struct TranslatedText: View {
 }
 
 #Preview {
-    TranslatedText("Hello").environmentObject(User(id: 1, name: "GAA", zipcode: 1, targetLanguage: Locale.Language(identifier: "es-419")))
+    TranslatedText("Hello").environmentObject(User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419")))
 }

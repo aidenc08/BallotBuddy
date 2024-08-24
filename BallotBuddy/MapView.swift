@@ -15,25 +15,29 @@ struct MapView: View {
     @State private var position = MapCameraPosition.region(MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco
             span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        ))
-    @State private var annotations: [LocationAnnotation] = []
+        )) 
+    public var zipCode: String
+    @EnvironmentObject var controller: PollUIController
 
     var body: some View {
-        
         Map(position: $position) {
-            ForEach(annotations) { annotation in
-                Annotation(coordinate: annotation.coordinate, anchor: .center, content: {
-                    MapMarkerView(name: annotation.title)
+            ForEach(controller.pollingPlaces) { annotation in
+                Annotation(coordinate: annotation.location, anchor: .center, content: {
+                    MapMarkerView(place: annotation)
                 }, label: {})
             }
         }
         .onAppear {
-            centerMapOnZipCode(zipCode: "10002")  // Example ZIP code
+            centerMapOnZipCode(zipCode: self.zipCode)  // Example ZIP code
+        }
+        .onChange(of: controller.selectedPlace) {
+            if (controller.anySelected()) {
+                centerMapOnSelected()
+            }
         }
     }
     
     func centerMapOnZipCode(zipCode: String) {
-
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(zipCode) { (placemarks, error) in
             guard let placemark = placemarks?.first,
@@ -48,23 +52,12 @@ struct MapView: View {
                 span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             ))
             
-            // Create and add annotation
-            let annotation = LocationAnnotation(
-                id: UUID(),
-                title: "ZIP Code: \(zipCode)",
-                coordinate: location.coordinate
-            )
-            
-            annotations = [annotation]
         }
     }
-}
-
-struct LocationAnnotation: Identifiable {
-    let id: UUID
-    let title: String
-    let coordinate: CLLocationCoordinate2D
+    func centerMapOnSelected() -> Void {
+        position = MapCameraPosition.region(MKCoordinateRegion(center: controller.selectedPlace!.location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)))
+    }
 }
 #Preview {
-    MapView()
+    MapView(zipCode: "10001")
 }

@@ -14,10 +14,10 @@ class User: Codable, Identifiable, ObservableObject {
     
     var id: Int
     var name: String
-    var zipcode: Int
+    var zipcode: String
     var targetLanguage: Locale.Language
     
-    init(id: Int, name: String, zipcode: Int, targetLanguage: Locale.Language) {
+    init(id: Int, name: String, zipcode: String, targetLanguage: Locale.Language) {
         self.id = id
         self.name = name
         self.zipcode = zipcode
