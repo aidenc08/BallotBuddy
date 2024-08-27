@@ -23,6 +23,10 @@
 		6FC4542E2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */; };
 		6FFFE09D2C77A2BE00CB96AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFFE09C2C77A2BE00CB96AC /* User.swift */; };
 		6FFFE09F2C77E82F00CB96AC /* TranslatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFFE09E2C77E82F00CB96AC /* TranslatedText.swift */; };
+		DC913E3C2C7AEC5600D8AAEF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC913E3B2C7AEC5600D8AAEF /* HomeView.swift */; };
+		DC913E432C7AF73C00D8AAEF /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC913E422C7AF73C00D8AAEF /* MainContentView.swift */; };
+		DC913E472C7AF7C100D8AAEF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC913E462C7AF7C100D8AAEF /* UIColor.swift */; };
+		DC913E492C7AFABC00D8AAEF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6FFFE09C2C77A2BE00CB96AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6FFFE09E2C77E82F00CB96AC /* TranslatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedText.swift; sourceTree = "<group>"; };
+		DC913E3B2C7AEC5600D8AAEF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DC913E422C7AF73C00D8AAEF /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		DC913E462C7AF7C100D8AAEF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +120,9 @@
 		6FC4540F2C71044A00E263AC /* BallotBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				6FC454102C71044A00E263AC /* BallotBuddyApp.swift */,
 				6FC454122C71044A00E263AC /* ContentView.swift */,
+				6FC454102C71044A00E263AC /* BallotBuddyApp.swift */,
+				DC913E3D2C7AF6CF00D8AAEF /* Content */,
 				6FFFE09C2C77A2BE00CB96AC /* User.swift */,
 				6FFFE09E2C77E82F00CB96AC /* TranslatedText.swift */,
 				6FA0AD4F2C79ACC700933463 /* MapView.swift */,
@@ -152,6 +161,33 @@
 				6FC4542D2C71044C00E263AC /* BallotBuddyUITestsLaunchTests.swift */,
 			);
 			path = BallotBuddyUITests;
+			sourceTree = "<group>";
+		};
+		DC913E3D2C7AF6CF00D8AAEF /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				DC913E4A2C7AFF2F00D8AAEF /* Helpers */,
+				DC913E3F2C7AF71200D8AAEF /* Pages */,
+				DC913E422C7AF73C00D8AAEF /* MainContentView.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		DC913E3F2C7AF71200D8AAEF /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				DC913E3B2C7AEC5600D8AAEF /* HomeView.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		DC913E4A2C7AFF2F00D8AAEF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */,
+				DC913E462C7AF7C100D8AAEF /* UIColor.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,14 +321,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F517E4A2C7A381C00876772 /* PollUIController.swift in Sources */,
+				DC913E472C7AF7C100D8AAEF /* UIColor.swift in Sources */,
 				6FC454132C71044A00E263AC /* ContentView.swift in Sources */,
+				DC913E432C7AF73C00D8AAEF /* MainContentView.swift in Sources */,
 				6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */,
+				DC913E492C7AFABC00D8AAEF /* NavigationBar.swift in Sources */,
 				6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */,
 				6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */,
 				6FA0AD502C79ACC700933463 /* MapView.swift in Sources */,
 				6F517E462C7A364F00876772 /* PollingPlace.swift in Sources */,
 				6FFFE09F2C77E82F00CB96AC /* TranslatedText.swift in Sources */,
 				6FFFE09D2C77A2BE00CB96AC /* User.swift in Sources */,
+				DC913E3C2C7AEC5600D8AAEF /* HomeView.swift in Sources */,
 				6F517E482C7A375400876772 /* PollingPlaceView.swift in Sources */,
 				6F16E96B2C79C501006E0968 /* MapMarkerView.swift in Sources */,
 			);
