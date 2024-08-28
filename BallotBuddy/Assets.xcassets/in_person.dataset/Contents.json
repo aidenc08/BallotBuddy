@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "in_person.json",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

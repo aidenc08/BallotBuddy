@@ -30,9 +30,10 @@ struct ContentView: View {
     }
 
     var body: some View {
-        PollingPlaceView()
+        MainContentView()
             .environmentObject(user)
             .environmentObject(controller)
+
     }
 }
 

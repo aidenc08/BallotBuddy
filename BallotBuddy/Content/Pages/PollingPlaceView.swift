@@ -1,45 +1,26 @@
 //
-//  MainContentView.swift
+//  PollingPlaceView.swift
 //  BallotBuddy
 //
-//  Created by Caden on 8/24/24.
+//  Created by Aiden Chavda on 8/24/24.
 //
 
 import SwiftUI
-import MapKit
 import CoreLocation
 
-struct MainContentView: View {
-    @State private var selectedIndex = 1
-    
+struct PollingPlaceView: View {
+    @EnvironmentObject var controller: PollUIController
+    @EnvironmentObject var user: User
     var body: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                switch selectedIndex {
-                case 0:
-                    HomeView()
-                case 1:
-                    PollingPlaceView()
-                case 2:
-                    Text("Profile")
-                default:
-                    HomeView()
-                }
+        GeometryReader { geometry in
+            VStack {
+                MapView(zipCode: user.zipcode)
+                    .frame(height: geometry.size.height * 0.5) // 40% of the height for MapView
+                ListView()
+                    .frame(height: geometry.size.height * 0.5) // 60% of the height for ListView
             }
-            
-            // Navigation Bar
-            NavigationBar(
-                selectedIndex: $selectedIndex,
-                items: [
-                    NavigationItem(iconName: "house", title: "Home"),
-                    NavigationItem(iconName: "magnifyingglass", title: "Search"),
-                    NavigationItem(iconName: "pencil.and.list.clipboard", title: "Register"),
-                    NavigationItem(iconName: "gearshape", title: "Settings")
-                ]
-            )
-            .background(Color(uiColor: UIColor(hex: "212121")))
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.top) // Optional, if you want the Map to extend under the safe area
     }
 }
 
@@ -59,8 +40,7 @@ struct MainContentView: View {
 
     let places = [place, place2, place3, place4, place5, place6]
     let controller = PollUIController(pollingPlaces: places)
-    return MainContentView()
+    return PollingPlaceView()
         .environmentObject(user)
         .environmentObject(controller)
-    
 }
