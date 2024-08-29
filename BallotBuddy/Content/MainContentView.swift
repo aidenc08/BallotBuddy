@@ -22,6 +22,8 @@ struct MainContentView: View {
                     PollingPlaceView()
                 case 2:
                     Text("Profile")
+                case 3:
+                    ElectionsView()
                 default:
                     HomeView()
                 }
@@ -34,6 +36,7 @@ struct MainContentView: View {
                     NavigationItem(iconName: "house", title: "Home"),
                     NavigationItem(iconName: "magnifyingglass", title: "Search"),
                     NavigationItem(iconName: "pencil.and.list.clipboard", title: "Register"),
+                    NavigationItem(iconName: "pencil.and.list.clipboard", title: "Elections"),
                     NavigationItem(iconName: "gearshape", title: "Settings")
                 ]
             )

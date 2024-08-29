@@ -1,0 +1,14 @@
+//
+//  Candidate.swift
+//  BallotBuddy
+//
+//  Created by Aiden Chavda on 8/28/24.
+//
+
+import Foundation
+
+struct Candidate: Codable {
+    var party: String
+    var name: String
+    var thumbnail: String
+}
