@@ -29,7 +29,7 @@ struct NavigationBar: View {
                 .frame(maxWidth: .infinity)
             }       
         }
-        .background(Color(uiColor: UIColor(hex: "212121"))) // Ensure background color fills the padded area
+        .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
         .padding(.horizontal) // Apply horizontal padding to the HStack
         .padding(.bottom, 20) // Set specific bottom padding height
         .padding(.top, 10) // Set specific top padding height
