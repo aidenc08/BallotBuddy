@@ -25,7 +25,7 @@ struct MainContentView: View {
                 case 3:
                     ElectionsView()
                 default:
-                    HomeView()
+                    SettingsView()
                 }
             }
             
@@ -40,7 +40,7 @@ struct MainContentView: View {
                     NavigationItem(iconName: "gearshape", title: "Settings")
                 ]
             )
-            .background(Color(uiColor: UIColor(hex: "212121")))
+            .background(Color(uiColor: globalBackgroundAccent))
         }
         .edgesIgnoringSafeArea(.all)
     }

@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var zipCode: String = ""
+
     var body: some View {
-        Text("Home Content")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(uiColor: UIColor(hex: "121212")))
-                    .ignoresSafeArea()
+        VStack {
+            HStack {
+                VStack {
+                    Text("Enter your zip code")
+                        .foregroundColor(Color(globalTextColor))
+                        .font(.system(size: 18))
+                }
+                .padding(.top, 50)
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            HStack {
+                TextField("Zip...", text: $zipCode)
+                    .padding(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color(globalBackgroundAccent), lineWidth: 1)
+                    )
+            }
+            .padding(.horizontal, 20)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .ignoresSafeArea()
+        .background(Color(uiColor: globalBackground))
     }
 }
 
