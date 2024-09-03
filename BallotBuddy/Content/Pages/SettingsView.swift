@@ -13,7 +13,7 @@ struct SettingsView: View {
                 Text("Settings")
                     .font(.system(size: 30))
                     .frame(maxWidth: .infinity)
-
+                
             }
             .padding(.top, 70)
             .padding(.bottom, 20)

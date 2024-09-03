@@ -39,3 +39,7 @@ struct HomeView: View {
         .background(Color(uiColor: globalBackground))
     }
 }
+
+#Preview {
+    HomeView()
+}

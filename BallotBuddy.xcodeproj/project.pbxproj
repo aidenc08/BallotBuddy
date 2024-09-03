@@ -18,8 +18,6 @@
 		6F73A3952C80196F00BD60A2 /* RequestsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F73A3942C80196F00BD60A2 /* RequestsUtil.swift */; };
 		6F73A3972C801D7000BD60A2 /* ElectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F73A3962C801D7000BD60A2 /* ElectionsView.swift */; };
 		6FA0AD502C79ACC700933463 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0AD4F2C79ACC700933463 /* MapView.swift */; };
-		6FA1B26F2C82721E00500D68 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1B26E2C82721E00500D68 /* Theme.swift */; };
-		6FA1B2712C82782000500D68 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1B2702C82782000500D68 /* SettingsView.swift */; };
 		6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454102C71044A00E263AC /* BallotBuddyApp.swift */; };
 		6FC454132C71044A00E263AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC454122C71044A00E263AC /* ContentView.swift */; };
 		6FC454152C71044C00E263AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454142C71044C00E263AC /* Assets.xcassets */; };
@@ -72,8 +70,6 @@
 		6F73A3962C801D7000BD60A2 /* ElectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionsView.swift; sourceTree = "<group>"; };
 		6F73A3982C80209300BD60A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6FA0AD4F2C79ACC700933463 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		6FA1B26E2C82721E00500D68 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = ../../Theme.swift; sourceTree = "<group>"; };
-		6FA1B2702C82782000500D68 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6FC4540D2C71044A00E263AC /* BallotBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BallotBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FC454102C71044A00E263AC /* BallotBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallotBuddyApp.swift; sourceTree = "<group>"; };
 		6FC454122C71044A00E263AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -293,7 +289,6 @@
 			isa = PBXGroup;
 			children = (
 				DC913E3B2C7AEC5600D8AAEF /* HomeView.swift */,
-				6FA1B2702C82782000500D68 /* SettingsView.swift */,
 				6F517E472C7A375400876772 /* PollingPlaceView.swift */,
 				DCB539EB2C823A7C0022DDE6 /* SettingsView.swift */,
 			);
@@ -303,7 +298,6 @@
 		DC913E4A2C7AFF2F00D8AAEF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6FA1B26E2C82721E00500D68 /* Theme.swift */,
 				DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */,
 				DC913E462C7AF7C100D8AAEF /* UIColor.swift */,
 				DCB539E92C810B5E0022DDE6 /* Theme.swift */,
@@ -446,14 +440,12 @@
 				6F517E4A2C7A381C00876772 /* PollUIController.swift in Sources */,
 				DC913E472C7AF7C100D8AAEF /* UIColor.swift in Sources */,
 				6FC454132C71044A00E263AC /* ContentView.swift in Sources */,
-				6FA1B26F2C82721E00500D68 /* Theme.swift in Sources */,
 				6FF651152C7EE71500B519D9 /* RegistrationItem.swift in Sources */,
 				6FE865E42C8016DA00FFF0ED /* Race.swift in Sources */,
 				DC913E432C7AF73C00D8AAEF /* MainContentView.swift in Sources */,
 				DCB539EC2C823A7C0022DDE6 /* SettingsView.swift in Sources */,
 				6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */,
 				DC913E492C7AFABC00D8AAEF /* NavigationBar.swift in Sources */,
-				6FA1B2712C82782000500D68 /* SettingsView.swift in Sources */,
 				6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */,
 				6FF651112C7EDFE900B519D9 /* FileUtil.swift in Sources */,
 				6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */,
