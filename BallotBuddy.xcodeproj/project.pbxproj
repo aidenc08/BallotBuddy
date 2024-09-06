@@ -16,7 +16,6 @@
 		6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4B2C7A3C0700876772 /* ListView.swift */; };
 		6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4D2C7A3DD900876772 /* ListItemView.swift */; };
 		6F73A3952C80196F00BD60A2 /* RequestsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F73A3942C80196F00BD60A2 /* RequestsUtil.swift */; };
-		6F73A3972C801D7000BD60A2 /* ElectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F73A3962C801D7000BD60A2 /* ElectionsView.swift */; };
 		6FA0AD502C79ACC700933463 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA0AD4F2C79ACC700933463 /* MapView.swift */; };
 		6FA1B26F2C82721E00500D68 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1B26E2C82721E00500D68 /* Theme.swift */; };
 		6FA1B2712C82782000500D68 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1B2702C82782000500D68 /* SettingsView.swift */; };
@@ -67,7 +66,6 @@
 		6F517E4B2C7A3C0700876772 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		6F517E4D2C7A3DD900876772 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		6F73A3942C80196F00BD60A2 /* RequestsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsUtil.swift; sourceTree = "<group>"; };
-		6F73A3962C801D7000BD60A2 /* ElectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionsView.swift; sourceTree = "<group>"; };
 		6F73A3982C80209300BD60A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6FA0AD4F2C79ACC700933463 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6FA1B26E2C82721E00500D68 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = ../../Theme.swift; sourceTree = "<group>"; };
@@ -129,24 +127,6 @@
 			path = UserData;
 			sourceTree = "<group>";
 		};
-		6F33CB712C7EF0D600534943 /* PollViews */ = {
-			isa = PBXGroup;
-			children = (
-				6FA0AD4F2C79ACC700933463 /* MapView.swift */,
-				6F16E96A2C79C501006E0968 /* MapMarkerView.swift */,
-			);
-			path = PollViews;
-			sourceTree = "<group>";
-		};
-		6F33CB732C7EF10300534943 /* ListViews */ = {
-			isa = PBXGroup;
-			children = (
-				6F517E4B2C7A3C0700876772 /* ListView.swift */,
-				6F517E4D2C7A3DD900876772 /* ListItemView.swift */,
-			);
-			path = ListViews;
-			sourceTree = "<group>";
-		};
 		6F33CB742C7EF11200534943 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,9 +139,7 @@
 		6F33CB762C7EF12800534943 /* SearchFeature */ = {
 			isa = PBXGroup;
 			children = (
-				6F33CB712C7EF0D600534943 /* PollViews */,
 				6F33CB742C7EF11200534943 /* Helpers */,
-				6F33CB732C7EF10300534943 /* ListViews */,
 			);
 			path = SearchFeature;
 			sourceTree = "<group>";
@@ -269,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				6FE865E12C80168400FFF0ED /* Candidate.swift */,
-				6F73A3962C801D7000BD60A2 /* ElectionsView.swift */,
 				6FE865E32C8016DA00FFF0ED /* Race.swift */,
 			);
 			path = SummaryFeature;
@@ -278,6 +255,7 @@
 		DC913E3D2C7AF6CF00D8AAEF /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				DCC511292C8A1F2A006FFADC /* Components */,
 				DC913E4A2C7AFF2F00D8AAEF /* Helpers */,
 				DC913E3F2C7AF71200D8AAEF /* Pages */,
 				DC913E422C7AF73C00D8AAEF /* MainContentView.swift */,
@@ -299,10 +277,21 @@
 			isa = PBXGroup;
 			children = (
 				6FA1B26E2C82721E00500D68 /* Theme.swift */,
-				DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */,
 				DC913E462C7AF7C100D8AAEF /* UIColor.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DCC511292C8A1F2A006FFADC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6F517E4B2C7A3C0700876772 /* ListView.swift */,
+				6F517E4D2C7A3DD900876772 /* ListItemView.swift */,
+				6F16E96A2C79C501006E0968 /* MapMarkerView.swift */,
+				6FA0AD4F2C79ACC700933463 /* MapView.swift */,
+				DC913E482C7AFABC00D8AAEF /* NavigationBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,7 +439,6 @@
 				6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */,
 				6FF651112C7EDFE900B519D9 /* FileUtil.swift in Sources */,
 				6FC454112C71044A00E263AC /* BallotBuddyApp.swift in Sources */,
-				6F73A3972C801D7000BD60A2 /* ElectionsView.swift in Sources */,
 				6FE865E22C80168400FFF0ED /* Candidate.swift in Sources */,
 				6FA0AD502C79ACC700933463 /* MapView.swift in Sources */,
 				6F517E462C7A364F00876772 /* PollingPlace.swift in Sources */,

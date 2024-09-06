@@ -9,23 +9,26 @@ import SwiftUI
 import CoreLocation
 
 struct ListItemView: View {
-    @EnvironmentObject var controller: PollUIController
     public var place: PollingPlace
+    @EnvironmentObject var controller: PollUIController
+    
     var body: some View {
         Button(action: select, label: {
             TranslatedText(place.name)
                 .font(.headline)
-                .padding()
-                .background(
+                /*.background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.blue)
                         .shadow(radius: 5)
-                )
-                .foregroundColor(.white)
-                .padding()
+                )*/
+                .foregroundColor(Color(globalTextColor))
+            Spacer()
+            
         })
+        .padding(20)
+        .background(Color(globalBackgroundAccent))
         if (controller.isSelected(place: place)) {
-            TranslatedText("Selected")
+            /*TranslatedText("Selected")
                 .font(.headline)
                             .padding()
                             .background(
@@ -35,6 +38,7 @@ struct ListItemView: View {
                             )
                             .foregroundColor(.white)
                             .padding()
+             */
         }
     }
     

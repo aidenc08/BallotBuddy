@@ -18,8 +18,11 @@ struct PollingPlaceView: View {
                     .frame(height: geometry.size.height * 0.5) // 40% of the height for MapView
                 ListView()
                     .frame(height: geometry.size.height * 0.5) // 60% of the height for ListView
+                    .background(Color(globalBackground))
+                    .scrollContentBackground(.hidden)
             }
         }
+        .background(Color(globalBackground))
         .edgesIgnoringSafeArea(.top) // Optional, if you want the Map to extend under the safe area
     }
 }
