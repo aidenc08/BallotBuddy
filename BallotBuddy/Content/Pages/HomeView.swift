@@ -105,3 +105,7 @@ struct HomeView: View {
     return HomeView()
         .environmentObject(user)
 }
+
+#Preview {
+    HomeView()
+}
