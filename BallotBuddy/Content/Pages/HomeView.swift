@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var races: [Race] = []
     @State private var zipCode: String = ""
     @State private var loadingScreen: Bool = true
+    @State private var selectedIndex: Int = 0
 
 
     var body: some View {
@@ -36,8 +37,19 @@ struct HomeView: View {
                             .stroke(Color(globalTextColor), lineWidth: 1)
                     )
             }
+            .onAppear(perform: {
+                updateRaces()
+                
+            })
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
+            if (races.count > 0) {
+                RacesNavigationBar(selectedIndex: $selectedIndex, items: races.map{RacesNavigationItem(title: $0.name)})
+                RaceView(index: $selectedIndex, races: $races)
+            }
+            
+
+            /*
             ZStack(alignment: .top) { // stupid shit to bypass not being able to set the fucking padding at the top of the fucking list
                 VStack {
                     HStack {
@@ -81,6 +93,7 @@ struct HomeView: View {
                 .zIndex(3)
                 .frame(maxWidth: .infinity, alignment: .top)
             }
+            */
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -90,22 +103,14 @@ struct HomeView: View {
     
     func updateRaces() {
         Task {
-            do {
-                races = try await RequestsUtil.getRaces(zipcode: user.zipcode)
-                loadingScreen = false
-            } catch {
-                print("Error: \(error)")
-            }
+            races = await DataModel.getRaces(zip: user.zipcode)
+            loadingScreen = false
         }
     }
 }
 
 #Preview {
-    let user = User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+    let user = User(id: 1, name: "GAA", zipcode: "94022", targetLanguage: Locale.Language(identifier: "es-419"))
     return HomeView()
         .environmentObject(user)
-}
-
-#Preview {
-    HomeView()
 }

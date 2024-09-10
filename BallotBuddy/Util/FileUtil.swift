@@ -8,7 +8,7 @@
 import Foundation
 
 struct FileUtil {
-    func writeToFile(fileName: String, data: User) -> Bool{
+    static func writeToFile<T: Encodable>(fileName: String, data: T) -> Bool{
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         
         do {
@@ -24,7 +24,7 @@ struct FileUtil {
         
     }
     
-    func writeToTextFile(fileName: String, text: String) -> Bool {
+    static func writeToTextFile(fileName: String, text: String) -> Bool {
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         
         do {
@@ -37,7 +37,7 @@ struct FileUtil {
         }
     }
     
-    func readFromTextFile(fileName: String) -> String {
+    static func readFromTextFile(fileName: String) -> String {
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         
         do {
@@ -50,30 +50,30 @@ struct FileUtil {
         }
     }
     
-    func getDocumentsDirectory() -> URL {
+    static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
     
-    func checkIfFileExists(fileName: String) -> Bool {
+    static func checkIfFileExists(fileName: String) -> Bool {
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         return FileManager.default.fileExists(atPath: filePath.path)
     }
-    func readFile(fileName: String) -> User {
+    static func readFile<T: Decodable>(fileName: String, as type: T.Type = T.self) -> T? {
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         do {
             let data = try String(contentsOfFile: filePath.path).data(using: .utf8)
-            let user = try JSONDecoder().decode(User.self, from: (data)!)
+            let user = try JSONDecoder().decode(T.self, from: (data)!)
             return user
         }
         catch {
             print("Read Failed")
         }
-        return User()
+        return nil
     }
     
-    func deleteFile(fileName: String) -> Bool {
+    static func deleteFile(fileName: String) -> Bool {
         let filePath = self.getDocumentsDirectory().appendingPathComponent(fileName)
         do {
             try FileManager.default.removeItem(at: filePath)
@@ -84,7 +84,7 @@ struct FileUtil {
         }
     }
     
-    func loadJSON<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
+    static func loadJSON<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
         let data: Data
 
         guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
@@ -105,4 +105,7 @@ struct FileUtil {
             fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
         }
     }
+    
+    
+
 }

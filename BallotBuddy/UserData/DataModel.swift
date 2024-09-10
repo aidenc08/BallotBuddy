@@ -8,12 +8,11 @@
 import Foundation
 
 struct DataModel {
-    let util = FileUtil()
-    let userDataFileName = "_user"
+    static let userDataFileName = "_user"
     
-    func getUser() -> User? {
-        if (util.checkIfFileExists(fileName: userDataFileName)) {
-            let user = util.readFile(fileName: userDataFileName)
+    static func getUser() -> User? {
+        if (FileUtil.checkIfFileExists(fileName: userDataFileName)) {
+            let user = FileUtil.readFile(fileName: userDataFileName, as: User.self)
             return user
         }
         else {
@@ -21,19 +20,40 @@ struct DataModel {
         }
     }
     
-    func saveUser(u: User) {
-        util.writeToFile(fileName: userDataFileName, data: u)
+    static func saveUser(u: User) {
+        FileUtil.writeToFile(fileName: userDataFileName, data: u)
     }
     
-    func deleteUser() {
-        util.deleteFile(fileName: userDataFileName)
+    static func deleteUser() {
+        FileUtil.deleteFile(fileName: userDataFileName)
     }
     
-    func getMailInRegistrationItems() -> [RegistrationItem] {
-        return util.loadJSON("mail.json", as: [RegistrationItem].self)
+    static func getMailInRegistrationItems() -> [RegistrationItem] {
+        return FileUtil.loadJSON("mail.json", as: [RegistrationItem].self)
     }
     
-    func getInPersonRegistrationItems() -> [RegistrationItem] {
-        return util.loadJSON("in_person.json", as: [RegistrationItem].self)
+    static func getInPersonRegistrationItems() -> [RegistrationItem] {
+        return FileUtil.loadJSON("in_person.json", as: [RegistrationItem].self)
+    }
+    
+    static func saveRaces(zip: String, races: [Race]) -> Void {
+        FileUtil.writeToFile(fileName: zip + ".json", data: races)
+    }
+    
+    static func getRaces(zip: String) async -> [Race] {
+        if (FileUtil.checkIfFileExists(fileName: zip + ".json")) {
+            return FileUtil.readFile(fileName: zip + ".json", as: [Race].self) ?? []
+        }
+        else {
+            do {
+                let races = try await RequestsUtil.getRaces(zipcode: zip)
+                DataModel.saveRaces(zip: zip, races: races)
+                return races
+            } catch {
+                print("Error: \(error)")
+            }
+            
+        }
+        return []
     }
 }
