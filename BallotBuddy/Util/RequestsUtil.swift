@@ -9,25 +9,44 @@ import Foundation
 
 struct CandidateResponse: Codable {
     var success: Bool
-    var data: [Race]
+    var data: [Race]?
 }
+
+struct PolicyResponse: Codable {
+    var summary: [Policy]
+    var url: String
+}
+
 
 struct RequestsUtil {
     
     static func getRaces(zipcode: String) async throws -> [Race]{
         // Ensure the URL is valid
-        let urlString = "http://64.227.107.82:8080/api/elections?zip=" + zipcode
+        let urlString = "http://154.53.63.206:8080/api/elections?zip=" + zipcode
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
         
         let (data, _) = try await URLSession.shared.data(from: url)
+        print(String(data: data, encoding: .utf8)!)
         let response = try JSONDecoder().decode(CandidateResponse.self, from: data)
         print(response.success)
         if (response.success) {
-            return response.data
+            return response.data!
         }
         throw URLError(.badServerResponse)
+    }
+    
+    static func getPolicies(url: String) async throws -> [PolicyResponse] {
+        let urlString = "http://154.53.63.206:8080/api/summaries?url=" + url
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        print(String(data: data, encoding: .utf8)!)
+        let response = try JSONDecoder().decode([PolicyResponse].self, from: data)
+        return response
     }
 
 }

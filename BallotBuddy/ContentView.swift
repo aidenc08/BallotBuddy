@@ -12,7 +12,7 @@ struct ContentView: View {
     let controller: PollUIController
     let user: User
     init() {
-        user = User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+        user = User(id: 1, name: "GAA", zipcode: "94024", targetLanguage: Locale.Language(identifier: "es-419"))
         let place = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), name: "Place", address: "")
         let place2 = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7754, longitude: -122.4200), name: "Place2", address: "")
         

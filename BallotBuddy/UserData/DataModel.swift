@@ -40,6 +40,10 @@ struct DataModel {
         FileUtil.writeToFile(fileName: zip + ".json", data: races)
     }
     
+    static func savePolicies(url: String, policies: [Policy]) -> Void {
+        FileUtil.writeToFile(fileName: url + ".json", data: policies)
+    }
+    
     static func getRaces(zip: String) async -> [Race] {
         if (FileUtil.checkIfFileExists(fileName: zip + ".json")) {
             return FileUtil.readFile(fileName: zip + ".json", as: [Race].self) ?? []
@@ -53,6 +57,33 @@ struct DataModel {
                 print("Error: \(error)")
             }
             
+        }
+        return []
+    }
+    
+    static func getPolicies(url: String) async -> [Policy] {
+        let substringToRemove = "https://"
+        let modifiedUrl = url.replacingOccurrences(of: substringToRemove, with: "")
+        if (FileUtil.checkIfFileExists(fileName: modifiedUrl + ".json")) {
+            return FileUtil.readFile(fileName: modifiedUrl + ".json", as: [Policy].self) ?? []
+        }
+        else {
+            do {
+                let data = try await RequestsUtil.getPolicies(url: url)
+                if (data.count == 0) {
+                    return []
+                }
+                var policies: [Policy] = []
+                for p in data {
+                    for policy in p.summary {
+                        policies.append(policy)
+                    }
+                }
+                DataModel.savePolicies(url: modifiedUrl, policies: policies)
+                return policies
+            } catch {
+                print("Error: \(error)")
+            }
         }
         return []
     }
