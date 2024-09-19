@@ -7,6 +7,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var themeToggle = false
+    @State private var contrastToggle = false
+    @State private var zipCode: String = ""
+
     var body: some View {
         VStack {
             HStack {
@@ -35,6 +39,8 @@ struct SettingsView: View {
                         Text("Theme")
                             .font(.system(size: 18))
                         Spacer()
+                        Toggle("", isOn: $themeToggle)
+                            .tint(Color(uiColor: globalAccent))
                     }
                     HStack(alignment: .center) {
                         Image(systemName: "eye")
@@ -44,13 +50,55 @@ struct SettingsView: View {
                         Text("Contrast")
                             .font(.system(size: 18))
                         Spacer()
+                        Toggle("", isOn: $contrastToggle)
+                            .tint(Color(uiColor: globalAccent))
                     }
                 }
                 .padding(.vertical, 10)
-                HStack {
-                    Text("Personal Settings")
-                        .font(.system(size: 20))
-                    Spacer()
+                VStack {
+                    HStack {
+                        Text("Personal Settings")
+                            .font(.system(size: 20))
+                        Spacer()
+                    }
+                    VStack {
+                        HStack {
+                            Text("Update Zip")
+                            Spacer()
+                        }
+                        TextField("Zip...", text: $zipCode)
+                            .padding(5)
+                            .foregroundColor(Color(globalTextColorDark))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color(globalTextColorDark), lineWidth: 1)
+                            )
+                        HStack {
+                            Button(action: {
+                                
+                            }){
+                                Text("Save")
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 5)
+                                    .background(Color(uiColor: globalAccent))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(4)
+                            }
+                            Button(action: {
+                                
+                            }){
+                                Text("Reset")
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 5)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .stroke(Color(globalTextColorDark), lineWidth: 1)
+                                    )
+                            }
+                            Spacer()
+                        }
+                    }
+                    .padding(.top, 6)
                 }
                 .padding(.vertical, 10)
             }

@@ -31,10 +31,10 @@ struct HomeView: View {
             HStack {
                 TextField("Zip...", text: $zipCode)
                     .padding(5)
-                    .foregroundColor(Color(globalTextColor))
+                    .foregroundColor(Color(globalTextColorDark))
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color(globalTextColor), lineWidth: 1)
+                            .stroke(Color(globalTextColorDark), lineWidth: 1)
                     )
             }
             .onAppear(perform: {
@@ -44,6 +44,13 @@ struct HomeView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
             if (races.count > 0) {
+                HStack {
+                    Text("Upcoming Elections")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color(globalTextColor))
+                    Spacer()
+                }
+                .padding(.horizontal)
                 RacesNavigationBar(selectedIndex: $selectedIndex, items: races.map{RacesNavigationItem(title: $0.name)})
                 RaceView(index: $selectedIndex, races: $races)
             }

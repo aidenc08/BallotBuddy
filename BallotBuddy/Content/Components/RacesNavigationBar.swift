@@ -12,24 +12,23 @@ struct RacesNavigationBar: View {
     let items: [RacesNavigationItem]
     
     var body: some View {
-        HStack {
+        ScrollView {
             ForEach(items.indices) { index in
                 Button(action: {
                     selectedIndex = index
                 }) {
-                    VStack {
+                    HStack {
                         Text(items[index].title)
-                            .font(.caption)
+                            .font(.system(size: 15))
+                        Spacer()
                     }
-                    .foregroundColor(selectedIndex == index ? Color(uiColor: UIColor(hex: "EA6461")) : Color.gray)
+                    .padding(.vertical, 5)
+                    .padding(.horizontal)
+                    .foregroundColor(selectedIndex == index ? Color(uiColor: globalAccent) : Color.gray)
                 }
-                .frame(maxWidth: .infinity)
             }
         }
-        .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
-        .padding(.horizontal) // Apply horizontal padding to the HStack
-        .padding(.bottom, 20) // Set specific bottom padding height
-        .padding(.top, 10) // Set specific top padding height
+        // .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
     }
 }
 

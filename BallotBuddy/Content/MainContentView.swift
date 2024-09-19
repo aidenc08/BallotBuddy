@@ -21,7 +21,7 @@ struct MainContentView: View {
                 case 1:
                     PollingPlaceView()
                 case 2:
-                    Text("Profile")
+                    RegisterView()
                 default:
                     SettingsView()
                 }
