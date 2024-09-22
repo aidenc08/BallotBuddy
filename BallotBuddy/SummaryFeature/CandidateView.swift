@@ -19,7 +19,7 @@ struct CandidateView: View {
                             Text(p.category).foregroundStyle(Color(globalTextColor))
                             Text(p.summary).foregroundStyle(Color(globalTextColor))
                         }
-                    }
+                    }  
                     
                 }
             }

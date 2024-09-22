@@ -62,8 +62,11 @@ struct DataModel {
     }
     
     static func getPolicies(url: String) async -> [Policy] {
-        let substringToRemove = "https://"
-        let modifiedUrl = url.replacingOccurrences(of: substringToRemove, with: "")
+        let firstSubstringToRemove = "https://"
+        let secondSubstringToRemove = "www."
+        let thirdSubstringToRemove = ".com/"
+        let fourthSubstringToRemove = ".com"
+        let modifiedUrl = url.replacingOccurrences(of: firstSubstringToRemove, with: "").replacingOccurrences(of: secondSubstringToRemove, with: "").replacingOccurrences(of: thirdSubstringToRemove, with: "").replacingOccurrences(of: fourthSubstringToRemove, with: "")
         if (FileUtil.checkIfFileExists(fileName: modifiedUrl + ".json")) {
             return FileUtil.readFile(fileName: modifiedUrl + ".json", as: [Policy].self) ?? []
         }
@@ -82,6 +85,7 @@ struct DataModel {
                 DataModel.savePolicies(url: modifiedUrl, policies: policies)
                 return policies
             } catch {
+                print(url)
                 print("Error: \(error)")
             }
         }

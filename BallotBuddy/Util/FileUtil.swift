@@ -13,7 +13,11 @@ struct FileUtil {
         
         do {
             let JSONdata = try JSONEncoder().encode(data)
+            print(fileName)
+            print(filePath.absoluteString)
+            print("Encoded")
             try JSONdata.write(to: filePath)
+            print("Wrote")
             return true
         }
         catch {
