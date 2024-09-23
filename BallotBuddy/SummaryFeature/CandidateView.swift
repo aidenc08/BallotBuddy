@@ -9,19 +9,22 @@ import SwiftUI
 
 struct CandidateView: View {
     @ObservedObject var candidate: Candidate
+    let columns = [GridItem(.adaptive(minimum: 100))]
+    
     var body: some View {
         VStack {
             Text(candidate.name).foregroundStyle(.white).onAppear(perform: updateCandidate)
             if (candidate.policies != nil) {
-                List {
-                    ForEach(candidate.policies!, id: \.self.summary) { p in
-                        HStack {
-                            Text(p.category).foregroundStyle(Color(globalTextColor))
-                            Text(p.summary).foregroundStyle(Color(globalTextColor))
+                ScrollView(.horizontal) {
+                    HStack(spacing: 10) {
+                        ForEach(candidate.policies!, id: \.self.summary) { p in
+                            CandidateTab(policy: p, selected: false)
                         }
-                    }  
+                    }
+                    .padding(.horizontal)
                     
                 }
+                Spacer()
             }
         }.background(Color(uiColor: globalBackground))
     }
