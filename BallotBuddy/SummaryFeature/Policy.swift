@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Policy: Codable {
+struct Policy: Codable, Equatable {
     var category: String
     var summary: String
 }

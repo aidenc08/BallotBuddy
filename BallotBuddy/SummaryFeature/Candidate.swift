@@ -54,14 +54,12 @@ class Candidate: Codable, ObservableObject {
     }
     
     // Fetch policies asynchronously
-    func getPolicies() -> Void {
-        Task {
-            let fetchedPolicies = await DataModel.getPolicies(url: self.campaign_url)
-            
-            // Ensure update happens on the main thread
-            DispatchQueue.main.async {
-                self.policies = fetchedPolicies
-            }
+    func getPolicies() async -> Void {
+        let fetchedPolicies = await DataModel.getPolicies(url: self.campaign_url)
+        
+        // Ensure update happens on the main thread
+        DispatchQueue.main.async {
+            self.policies = fetchedPolicies
         }
     }
 }
