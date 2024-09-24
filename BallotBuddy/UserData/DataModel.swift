@@ -79,6 +79,7 @@ struct DataModel {
                 var policies: [Policy] = []
                 for p in data {
                     for policy in p.summary {
+                        policy.url = p.url
                         policies.append(policy)
                     }
                 }

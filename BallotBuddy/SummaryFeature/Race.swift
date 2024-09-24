@@ -10,7 +10,7 @@ import Foundation
 struct Race: Codable {
     var name: String
     var level: String
-    var branch: String
+    var branch: String?
     var type: String?
     var candidates: [Candidate]
 }
