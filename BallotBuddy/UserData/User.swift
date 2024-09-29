@@ -16,12 +16,14 @@ class User: Codable, Identifiable, ObservableObject {
     var name: String
     var zipcode: String
     var targetLanguage: Locale.Language
+    var settings: SettingsObject
     
     init(id: Int, name: String, zipcode: String, targetLanguage: Locale.Language) {
         self.id = id
         self.name = name
         self.zipcode = zipcode
         self.targetLanguage = targetLanguage
+        self.settings = SettingsObject()
     }
     
     init() {
@@ -29,5 +31,6 @@ class User: Codable, Identifiable, ObservableObject {
         self.name = ""
         self.zipcode = ""
         self.targetLanguage = Locale.Language(identifier: "en-US")
+        self.settings = SettingsObject()
     }
 }

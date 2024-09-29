@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var themeToggle = false
     @State private var contrastToggle = false
     @State private var zipCode: String = ""
+    @EnvironmentObject var user: User
 
     var body: some View {
         VStack {
@@ -19,6 +20,10 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
                 
             }
+            .onAppear(perform: {
+                setSettings()
+                saveData()
+            })
             .padding(.top, 70)
             .padding(.bottom, 20)
             .background(Color(uiColor: globalBackgroundAccent))
@@ -41,6 +46,7 @@ struct SettingsView: View {
                         Spacer()
                         Toggle("", isOn: $themeToggle)
                             .tint(Color(uiColor: globalAccent))
+                            .onChange(of: themeToggle, saveData)
                     }
                     HStack(alignment: .center) {
                         Image(systemName: "eye")
@@ -52,6 +58,7 @@ struct SettingsView: View {
                         Spacer()
                         Toggle("", isOn: $contrastToggle)
                             .tint(Color(uiColor: globalAccent))
+                            .onChange(of: contrastToggle, saveData)
                     }
                 }
                 .padding(.vertical, 10)
@@ -75,7 +82,7 @@ struct SettingsView: View {
                             )
                         HStack {
                             Button(action: {
-                                
+                                setZip(zip: zipCode)
                             }){
                                 Text("Save")
                                     .padding(.horizontal)
@@ -110,6 +117,22 @@ struct SettingsView: View {
         .ignoresSafeArea()
         .background(Color(uiColor: globalBackground))
         .foregroundColor(Color(globalTextColor))
+    }
+    
+    func saveData() -> Void {
+        user.settings.contrast = self.contrastToggle
+        user.settings.theme = self.themeToggle
+        DataModel.saveUser(u: user)
+    }
+    
+    func setSettings() -> Void {
+        self.themeToggle = user.settings.theme
+        self.contrastToggle = user.settings.contrast
+    }
+    
+    func setZip(zip: String) -> Void {
+        user.zipcode = zip
+        DataModel.saveUser(u: user)
     }
 }
 
