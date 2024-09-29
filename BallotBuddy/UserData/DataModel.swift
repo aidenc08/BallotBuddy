@@ -92,4 +92,15 @@ struct DataModel {
         }
         return []
     }
+    
+    static func checkValidZipCode(zip: String) async -> Bool {
+        var response = false
+        do {
+            response = try await RequestsUtil.checkValidZipCode(zip: zip)
+        }
+        catch {
+            response = false
+        }
+        return response
+    }
 }

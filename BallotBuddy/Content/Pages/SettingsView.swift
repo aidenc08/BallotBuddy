@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var themeToggle = false
     @State private var contrastToggle = false
     @State private var zipCode: String = ""
+    @State private var zipError = false
     @EnvironmentObject var user: User
 
     var body: some View {
@@ -128,11 +129,22 @@ struct SettingsView: View {
     func setSettings() -> Void {
         self.themeToggle = user.settings.theme
         self.contrastToggle = user.settings.contrast
+        self.zipCode = user.zipcode
     }
     
     func setZip(zip: String) -> Void {
-        user.zipcode = zip
-        DataModel.saveUser(u: user)
+        Task {
+            self.zipError = !(await user.checkValidZipCode(zip: zip))
+            if (self.zipError) {
+                print("Zip Error")
+                return
+            }
+            else {
+                user.zipcode = zip
+                DataModel.saveUser(u: user)
+            }
+        }
+
     }
 }
 

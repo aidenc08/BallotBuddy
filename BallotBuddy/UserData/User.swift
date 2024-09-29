@@ -33,4 +33,8 @@ class User: Codable, Identifiable, ObservableObject {
         self.targetLanguage = Locale.Language(identifier: "en-US")
         self.settings = SettingsObject()
     }
+    
+    func checkValidZipCode(zip: String) async -> Bool {
+        return await DataModel.checkValidZipCode(zip: zip)
+    }
 }

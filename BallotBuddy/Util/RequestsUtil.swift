@@ -17,6 +17,10 @@ struct PolicyResponse: Codable {
     var url: String
 }
 
+struct ZipResponse: Codable {
+    var success: Bool
+}
+
 
 struct RequestsUtil {
     
@@ -60,6 +64,25 @@ struct RequestsUtil {
             let response = try JSONDecoder().decode([PolicyResponse].self, from: data)
             return response
         }
+    }
+    
+    static func checkValidZipCode(zip: String) async throws -> Bool {
+        let urlString = "http://154.53.63.206:8080/api/elections?zip=" + zip
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        print(String(data: data, encoding: .utf8)!)
+        do {
+            let response = try JSONDecoder().decode(ZipResponse.self, from: data)
+            return response.success
+        }
+        catch {
+            return false
+        }
+        
+        
     }
 
 }
