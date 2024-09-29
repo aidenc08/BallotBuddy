@@ -20,14 +20,22 @@ struct RacesNavigationBar: View {
                     HStack {
                         Text(items[index].title)
                             .font(.system(size: 15))
+                            .frame(maxWidth: .infinity, alignment: .center)
                         Spacer()
                     }
-                    .padding(.vertical, 5)
-                    .padding(.horizontal)
-                    .foregroundColor(selectedIndex == index ? Color(uiColor: globalAccent) : Color.gray)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 10)
+                    .background(selectedIndex == index ? Color(globalAccent) : Color.clear)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color(selectedIndex == index ? globalAccent : globalTextColorDark), lineWidth: 1)
+                    )
+                    .foregroundColor(Color(selectedIndex == index ? globalTextColor : globalTextColorDark))
                 }
             }
         }
+        .padding(.horizontal)
         // .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
     }
 }

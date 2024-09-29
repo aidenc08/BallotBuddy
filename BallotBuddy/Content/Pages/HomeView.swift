@@ -54,53 +54,6 @@ struct HomeView: View {
                 RacesNavigationBar(selectedIndex: $selectedIndex, items: races.map{RacesNavigationItem(title: $0.name)})
                 RaceView(index: $selectedIndex, races: $races)
             }
-            
-
-            /*
-            ZStack(alignment: .top) { // stupid shit to bypass not being able to set the fucking padding at the top of the fucking list
-                VStack {
-                    HStack {
-                        Text("Loading...")
-                            .foregroundColor(Color(globalTextColor))
-                            .font(.system(size: 18))
-                        Spacer()
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 30)
-                .zIndex(3)
-                .frame(maxWidth: .infinity, alignment: .top)
-                .opacity(loadingScreen ? 1 : 0)
-                List {
-                    ForEach(races, id: \.self.name) { race in
-                        Text(race.name)
-                            .listRowBackground(Color(uiColor: globalBackgroundAccent))
-                            .foregroundColor(Color(globalTextColor))
-                    }
-                }
-                .background(Color(globalBackground))
-                .onAppear(perform: {
-                    updateRaces()
-                    
-                })
-                .scrollContentBackground(.hidden)
-                .zIndex(2)
-                
-                VStack {
-                    HStack {
-                        Text("Upcoming Elections")
-                            .foregroundColor(Color(globalTextColor))
-                            .font(.system(size: 20))
-                        Spacer()
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 0)
-                    .background(Color(globalBackground))
-                }
-                .zIndex(3)
-                .frame(maxWidth: .infinity, alignment: .top)
-            }
-            */
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
