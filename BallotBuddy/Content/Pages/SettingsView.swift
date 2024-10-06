@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var themeToggle = false
+    @State private var themeToggle = theme
     @State private var contrastToggle = false
     @State private var zipCode: String = ""
     @State private var zipError = false

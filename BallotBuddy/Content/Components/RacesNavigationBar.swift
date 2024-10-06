@@ -18,6 +18,7 @@ struct RacesNavigationBar: View {
                     selectedIndex = index
                 }) {
                     HStack {
+                        //Text(items[index].type)
                         Text(items[index].title)
                             .font(.system(size: 15))
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -31,7 +32,7 @@ struct RacesNavigationBar: View {
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(selectedIndex == index ? globalAccent : globalTextColorDark), lineWidth: 1)
                     )
-                    .foregroundColor(Color(selectedIndex == index ? globalTextColor : globalTextColorDark))
+                    .foregroundColor(selectedIndex == index ? Color.white : Color(globalTextColorDark))
                 }
             }
         }

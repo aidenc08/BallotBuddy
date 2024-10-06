@@ -10,36 +10,41 @@ import MapKit
 import CoreLocation
 
 struct MainContentView: View {
+    @State private var onLanding = false
     @State private var selectedIndex = 1
     
     var body: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                switch selectedIndex {
-                case 0:
-                    HomeView()
-                case 1:
-                    PollingPlaceView()
-                case 2:
-                    RegisterView()
-                default:
-                    SettingsView()
+        if onLanding  {
+            // LandingView(onLanding: $onLanding)
+        } else {
+            VStack(spacing: 0) {
+                ZStack {
+                    switch selectedIndex {
+                    case 0:
+                        HomeView()
+                    case 1:
+                        PollingPlaceView()
+                    case 2:
+                        RegisterView()
+                    default:
+                        SettingsView()
+                    }
                 }
+                
+                // Navigation Bar
+                NavigationBar(
+                    selectedIndex: $selectedIndex,
+                    items: [
+                        NavigationItem(iconName: "house", title: "Home"),
+                        NavigationItem(iconName: "magnifyingglass", title: "Search"),
+                        NavigationItem(iconName: "pencil.and.list.clipboard", title: "Register"),
+                        NavigationItem(iconName: "gearshape", title: "Settings")
+                    ]
+                )
+                .background(Color(uiColor: globalBackgroundAccent))
             }
-            
-            // Navigation Bar
-            NavigationBar(
-                selectedIndex: $selectedIndex,
-                items: [
-                    NavigationItem(iconName: "house", title: "Home"),
-                    NavigationItem(iconName: "magnifyingglass", title: "Search"),
-                    NavigationItem(iconName: "pencil.and.list.clipboard", title: "Register"),
-                    NavigationItem(iconName: "gearshape", title: "Settings")
-                ]
-            )
-            .background(Color(uiColor: globalBackgroundAccent))
+            .edgesIgnoringSafeArea(.all)
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 

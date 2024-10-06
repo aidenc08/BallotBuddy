@@ -28,7 +28,7 @@ struct MapView: View {
                     }, label: {})
                 }
             }
-            .colorScheme(.dark)
+            .colorScheme(theme ? .light : .dark)
             .onAppear {
                 centerMapOnZipCode(zipCode: self.zipCode)  // Example ZIP code
             }

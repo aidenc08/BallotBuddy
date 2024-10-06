@@ -13,52 +13,63 @@ struct HomeView: View {
     @State private var zipCode: String = ""
     @State private var loadingScreen: Bool = true
     @State private var selectedIndex: Int = 0
-
-
+    @State private var spin = false
+    
     var body: some View {
-        VStack {
-            HStack {
+        ZStack {
+            if loadingScreen {
                 VStack {
-                    Text("Enter your zip code")
-                        .foregroundColor(Color(globalTextColor))
-                        .font(.system(size: 18))
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .resizable()
+                        .foregroundColor(Color(globalAccent))
+                        .frame(width: 80, height: 70)
+                        .rotationEffect(.degrees(spin ? 360 : 0))
+                        .animation(
+                            Animation.linear(duration: 1)
+                                .repeatForever(autoreverses: false),
+                            value: spin
+                        )
+                        .onAppear {
+                            spin = true
+                        }
                 }
-                .padding(.top, 50)
+                .zIndex(9999)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+                .background(Color(globalBackground))
+            }
+            VStack {
+                HStack {}
+                    .onAppear(perform: {updateRaces()})
+                    .padding(.top, 60)
+                if (races.count > 0) {
+                    HStack {
+                        Text("Upcoming Elections")
+                            .font(.system(size: 18))
+                            .foregroundColor(Color(globalTextColor))
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    Spacer().frame(height: 10)
+                    HStack(spacing: 10) {
+                        FilterButton(name: "All", selected: true)
+                        FilterButton(name: "Local", selected: false)
+                        FilterButton(name: "State", selected: false)
+                        FilterButton(name: "Federal", selected: false)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    Spacer().frame(height: 10)
+                    RacesNavigationBar(selectedIndex: $selectedIndex, items: races.map{RacesNavigationItem(title: $0.name)})
+                    RaceView(index: $selectedIndex, races: $races)
+                }
                 Spacer()
             }
-            .padding(.horizontal, 20)
-            .padding(.top, 20)
-            HStack {
-                TextField("Zip...", text: $zipCode)
-                    .padding(5)
-                    .foregroundColor(Color(globalTextColorDark))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color(globalTextColorDark), lineWidth: 1)
-                    )
-            }
-            .onAppear(perform: {
-                updateRaces()
-                
-            })
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
-            if (races.count > 0) {
-                HStack {
-                    Text("Upcoming Elections")
-                        .font(.system(size: 18))
-                        .foregroundColor(Color(globalTextColor))
-                    Spacer()
-                }
-                .padding(.horizontal)
-                RacesNavigationBar(selectedIndex: $selectedIndex, items: races.map{RacesNavigationItem(title: $0.name)})
-                RaceView(index: $selectedIndex, races: $races)
-            }
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
+            .background(Color(uiColor: globalBackground))
+
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea()
-        .background(Color(uiColor: globalBackground))
     }
     
     func updateRaces() {
