@@ -11,6 +11,7 @@ struct RegisterView: View {
     @State private var questionResponses: [Bool?] = [nil, nil, nil, nil]
     @State private var showQuiz: Bool = true
     @State private var canVote: Bool = false
+    @EnvironmentObject var user: User
     var questions = [
         "You are a US citizen",
         "You currently live in the United States",
@@ -29,7 +30,7 @@ struct RegisterView: View {
             VStack {
                 Spacer()
                     .frame(maxHeight: 70)
-                Text("Lets get started!")
+                TranslatedText("Lets get started!")
                     .font(.system(size: 20))
                 ScrollView {
                     QuestionItem(question: "Are you a US citizen?", index: 0, questionResponses: $questionResponses)
@@ -41,11 +42,11 @@ struct RegisterView: View {
                         canVote = (questionResponses.allSatisfy { $0 == true }) ? true : false
                         showQuiz = false
                     }){
-                        Text("Next")
+                        TranslatedText("Next")
                             .frame(maxWidth: .infinity)
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color(globalAccent))
+                            .background(Color(user.settings.getGlobalAccent()))
                             .foregroundColor(Color.white)
                             .cornerRadius(5)
                     }
@@ -58,25 +59,25 @@ struct RegisterView: View {
             // fail
             VStack {
                 HStack {
-                    Text("You are ")
-                    + Text("not eligible")
-                        .foregroundColor(Color(globalAccent))
-                    + Text(" to vote")
+                    TranslatedText("You are ").translatedTextView()
+                    + TranslatedText("not eligible").translatedTextView()
+                        .foregroundColor(Color(user.settings.getGlobalAccent()))
+                    + TranslatedText(" to vote").translatedTextView()
                 }
                 .font(.system(size: 30))
                 Spacer().frame(height: 20)
                 ForEach(0..<questions.count, id: \.self) { i in
                     HStack {
                         Image(systemName: questionResponses[i] ?? false ? "checkmark.square.fill" : "xmark.app.fill")
-                            .foregroundColor(Color(questionResponses[i] ?? false ? globalTextColor : globalAccent))
-                        Text(questions[i])
+                            .foregroundColor(Color(questionResponses[i] ?? false ? user.settings.getGlobalTextColor() : user.settings.getGlobalAccent()))
+                        TranslatedText(questions[i])
                         Spacer()
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 5)
                 }
                 Spacer().frame(height: 20)
-                Text("How to vote?")
+                TranslatedText("How to vote?")
                     .font(.system(size: 30))
                 Spacer().frame(height: 20)
                 VStack {
@@ -85,7 +86,7 @@ struct RegisterView: View {
                     }
                 }
             }
-            .foregroundColor(Color(globalTextColor))
+            .foregroundColor(Color(user.settings.getGlobalTextColor()))
             .font(.system(size: 20))
             .opacity(!showQuiz && !canVote ? 1 : 0)
             //.opacity(1)
@@ -93,47 +94,47 @@ struct RegisterView: View {
             // pass
             VStack {
                 HStack {
-                    Text("You are ")
-                    + Text("eligible")
-                        .foregroundColor(Color(globalAccent))
-                    + Text(" to vote")
+                    TranslatedText("You are ").translatedTextView()
+                    + TranslatedText("eligible").translatedTextView()
+                        .foregroundColor(Color(user.settings.getGlobalAccent()))
+                    + TranslatedText(" to vote").translatedTextView()
                 }
                 .font(.system(size: 30))
                 Spacer().frame(height: 20)
-                Text("Check your state's voter registration page to see next steps:")
+                TranslatedText("Check your state's voter registration page to see next steps:")
                 VStack {
                     HStack {
                         Link(destination: URL(string: "https://vote.gov/register")!, label: {
-                            Text("Registration Page")
+                            TranslatedText("Registration Page")
                                 .underline()
                         })
                         .underline(true)
-                        .foregroundColor(Color(globalAccent))
+                        .foregroundColor(Color(user.settings.getGlobalAccent()))
                         Spacer()
                     }
                     HStack {
                         Link(destination: URL(string: "https://www.nass.org/can-I-vote/voter-registration-statusr")!, label: {
-                            Text("Registration Status")
+                            TranslatedText("Registration Status")
                                 .underline()
                         })
                             .underline(true)
-                            .foregroundColor(Color(globalAccent))
+                            .foregroundColor(Color(user.settings.getGlobalAccent()))
                         Spacer()
                     }
                     HStack {
                         Link(destination: URL(string: "https://www.nass.org/can-I-vote")!, label: {
-                            Text("Voting Information")
+                            TranslatedText("Voting Information")
                                 .underline()
                         })
                             .underline(true)
-                            .foregroundColor(Color(globalAccent))
+                            .foregroundColor(Color(user.settings.getGlobalAccent()))
                         Spacer()
                     }
                 }
                 .padding(.horizontal, 15)
             }
             .padding(.horizontal, 20)
-            .foregroundColor(Color(globalTextColor))
+            .foregroundColor(Color(user.settings.getGlobalTextColor()))
             .font(.system(size: 20))
             .opacity(!showQuiz && canVote ? 1 : 0)
             // .opacity(1)
@@ -141,14 +142,14 @@ struct RegisterView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color(uiColor: globalBackground))
-        .foregroundColor(Color(globalTextColor))
+        .background(Color(uiColor: user.settings.getGlobalBackground()))
+        .foregroundColor(Color(user.settings.getGlobalTextColor()))
     }
     
     func renderIfFalse(condition: Bool, solution: String) -> some View {
         HStack {
             if !condition {
-                Text(solution)
+                TranslatedText(solution)
                     .padding(.horizontal)
                     .padding(.vertical, 5)
                 Spacer()

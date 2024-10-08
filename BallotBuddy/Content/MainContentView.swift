@@ -10,8 +10,10 @@ import MapKit
 import CoreLocation
 
 struct MainContentView: View {
-    @State private var onLanding = false
-    @State private var selectedIndex = 1
+    @Binding var onLanding: Bool
+    @State var selectedIndex = 0
+    @EnvironmentObject var user: User
+    var controller: PollUIController = PollUIController(pollingPlaces: [])
     
     var body: some View {
         if onLanding  {
@@ -22,12 +24,14 @@ struct MainContentView: View {
                     switch selectedIndex {
                     case 0:
                         HomeView()
+                            .environmentObject(FilterButtonController())
                     case 1:
                         PollingPlaceView()
+                            .environmentObject(self.controller)
                     case 2:
                         RegisterView()
                     default:
-                        SettingsView()
+                        SettingsView(onLanding: $onLanding)
                     }
                 }
                 
@@ -41,15 +45,17 @@ struct MainContentView: View {
                         NavigationItem(iconName: "gearshape", title: "Settings")
                     ]
                 )
-                .background(Color(uiColor: globalBackgroundAccent))
+                .background(Color(uiColor: user.settings.getGlobalBackgroundAccent()))
             }
             .edgesIgnoringSafeArea(.all)
         }
     }
 }
 
+/*
+
 #Preview {
-    let user = User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+    let user = User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
     let place = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), name: "Place", address: "")
     let place2 = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7754, longitude: -122.4200), name: "Place2", address: "")
     
@@ -64,8 +70,10 @@ struct MainContentView: View {
 
     let places = [place, place2, place3, place4, place5, place6]
     let controller = PollUIController(pollingPlaces: places)
-    return MainContentView()
+    MainContentView()
         .environmentObject(user)
         .environmentObject(controller)
     
 }
+
+*/

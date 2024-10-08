@@ -18,7 +18,7 @@ struct MapMarkerView: View {
                     .font(.title)
                     .foregroundColor(.red)
             })
-            Text(place.name)
+            TranslatedText(place.name)
                 .font(.caption)
                 .padding(5)
                 .background(Color.white)

@@ -11,32 +11,34 @@ struct QuestionItem: View {
     var question: String
     var index: Int
     @Binding var questionResponses: [Bool?]
+    @EnvironmentObject var user: User
     
-    @State private var yesButtonColor: UIColor = globalTextColorDark
-    @State private var noButtonColor: UIColor = globalTextColorDark
+    @State private var yesButtonColor: UIColor = UIColor(white: 0, alpha: 0)
+    @State private var noButtonColor: UIColor = UIColor(white: 0, alpha: 0)
     
     var body: some View {
-        Text(question)
+        TranslatedText(question)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)
             .padding()
-            .background(Color(uiColor: globalAccent))
+            .background(Color(uiColor: user.settings.getGlobalAccent()))
             .foregroundColor(.white)
             .cornerRadius(4)
             .font(.system(size: 18))
+            .onAppear(perform: setColors)
         VStack {
             Button(action: {
-                if yesButtonColor == globalAccent {
+                if yesButtonColor == user.settings.getGlobalAccent() {
                     questionResponses[index] = nil
-                    yesButtonColor = globalTextColorDark
+                    yesButtonColor = user.settings.getGlobalTextColorDark()
                 } else {
                     questionResponses[index] = true
-                    yesButtonColor = globalAccent
+                    yesButtonColor = user.settings.getGlobalAccent()
                 }
-                noButtonColor = globalTextColorDark
+                noButtonColor = user.settings.getGlobalTextColorDark()
                 
             }){
-                Text("Yes")
+                TranslatedText("Yes")
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
                     .padding(.vertical, 5)
@@ -50,16 +52,16 @@ struct QuestionItem: View {
             Spacer()
                 .frame(maxHeight: 20)
             Button(action: {
-                if noButtonColor == globalAccent {
+                if noButtonColor == user.settings.getGlobalAccent() {
                     questionResponses[index] = nil
-                    noButtonColor = globalTextColorDark
+                    noButtonColor = user.settings.getGlobalTextColorDark()
                 } else {
                     questionResponses[index] = false
-                    noButtonColor = globalAccent
+                    noButtonColor = user.settings.getGlobalAccent()
                 }
-                yesButtonColor = globalTextColorDark
+                yesButtonColor = user.settings.getGlobalTextColorDark()
             }){
-                Text("No")
+                TranslatedText("No")
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
                     .padding(.vertical, 5)
@@ -71,5 +73,10 @@ struct QuestionItem: View {
             }
         }
         .padding(.vertical, 10)
+    }
+    
+    func setColors() -> Void {
+        yesButtonColor = user.settings.getGlobalTextColorDark()
+        noButtonColor = user.settings.getGlobalTextColorDark()
     }
 }

@@ -7,16 +7,18 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var themeToggle = theme
+    @State private var themeToggle = false
     @State private var contrastToggle = false
     @State private var zipCode: String = ""
     @State private var zipError = false
+    @State private var refresh: Bool = false
     @EnvironmentObject var user: User
+    @Binding var onLanding: Bool
 
     var body: some View {
         VStack {
             HStack {
-                Text("Settings")
+                TranslatedText("Settings")
                     .font(.system(size: 30))
                     .frame(maxWidth: .infinity)
                 
@@ -27,11 +29,11 @@ struct SettingsView: View {
             })
             .padding(.top, 70)
             .padding(.bottom, 20)
-            .background(Color(uiColor: globalBackgroundAccent))
+            .background(Color(uiColor: user.settings.getGlobalBackgroundAccent()))
             .ignoresSafeArea()
             VStack {
                 HStack {
-                    Text("App Settings")
+                    TranslatedText("App Settings")
                         .font(.system(size: 20))
                     Spacer()
                 }
@@ -42,11 +44,11 @@ struct SettingsView: View {
                             .font(.system(size: 24))
                             .padding(.top, 6)
                             .foregroundColor(Color.gray)
-                        Text("Theme")
+                        TranslatedText("Theme")
                             .font(.system(size: 18))
                         Spacer()
                         Toggle("", isOn: $themeToggle)
-                            .tint(Color(uiColor: globalAccent))
+                            .tint(Color(uiColor: user.settings.getGlobalAccent()))
                             .onChange(of: themeToggle, saveData)
                     }
                     HStack(alignment: .center) {
@@ -54,56 +56,59 @@ struct SettingsView: View {
                             .font(.system(size: 24))
                             .padding(.top, 6)
                             .foregroundColor(Color.gray)
-                        Text("Contrast")
+                        TranslatedText("Contrast")
                             .font(.system(size: 18))
                         Spacer()
                         Toggle("", isOn: $contrastToggle)
-                            .tint(Color(uiColor: globalAccent))
+                                    .tint(Color(uiColor: user.settings.getGlobalAccent()))
                             .onChange(of: contrastToggle, saveData)
                     }
                 }
                 .padding(.vertical, 10)
                 VStack {
                     HStack {
-                        Text("Personal Settings")
+                        TranslatedText("Personal Settings")
                             .font(.system(size: 20))
                         Spacer()
                     }
                     VStack {
                         HStack {
-                            Text("Update Zip")
+                            TranslatedText("Update Zip")
                             Spacer()
                         }
                         TextField("Zip...", text: $zipCode)
                             .padding(5)
-                            .foregroundColor(Color(globalTextColorDark))
+                            .foregroundColor(Color(user.settings.getGlobalTextColorDark()))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 4)
-                                    .stroke(Color(globalTextColorDark), lineWidth: 1)
+                                    .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
                             )
                         HStack {
                             Button(action: {
                                 setZip(zip: zipCode)
                             }){
-                                Text("Save")
+                                TranslatedText("Save")
                                     .padding(.horizontal)
                                     .padding(.vertical, 5)
-                                    .background(Color(uiColor: globalAccent))
+                                    .background(Color(uiColor: user.settings.getGlobalAccent()))
                                     .foregroundColor(.white)
                                     .cornerRadius(4)
                             }
                             Button(action: {
-                                
+                                zipCode = ""
                             }){
-                                Text("Reset")
+                                TranslatedText("Clear")
                                     .padding(.horizontal)
                                     .padding(.vertical, 5)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 4)
-                                            .stroke(Color(globalTextColorDark), lineWidth: 1)
+                                            .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
                                     )
                             }
                             Spacer()
+                        }
+                        Button(action: deleteInformation) {
+                            TranslatedText("Delete Information")
                         }
                     }
                     .padding(.top, 6)
@@ -116,13 +121,14 @@ struct SettingsView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color(uiColor: globalBackground))
-        .foregroundColor(Color(globalTextColor))
+        .background(Color(uiColor: user.settings.getGlobalBackground()))
+        .foregroundColor(Color(user.settings.getGlobalTextColor()))
     }
     
     func saveData() -> Void {
         user.settings.contrast = self.contrastToggle
         user.settings.theme = self.themeToggle
+        refresh = !refresh
         DataModel.saveUser(u: user)
     }
     
@@ -140,14 +146,17 @@ struct SettingsView: View {
                 return
             }
             else {
+                print("Saved")
                 user.zipcode = zip
                 DataModel.saveUser(u: user)
             }
         }
 
     }
-}
-
-#Preview {
-    SettingsView()
+    
+    func deleteInformation() -> Void {
+        DataModel.deleteUser()
+        onLanding = true
+        
+    }
 }

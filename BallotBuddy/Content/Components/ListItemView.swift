@@ -11,6 +11,7 @@ import CoreLocation
 struct ListItemView: View {
     public var place: PollingPlace
     @EnvironmentObject var controller: PollUIController
+    @EnvironmentObject var user: User
     
     var body: some View {
         Button(action: select, label: {
@@ -21,12 +22,12 @@ struct ListItemView: View {
                         .fill(Color.blue)
                         .shadow(radius: 5)
                 )*/
-                .foregroundColor(Color(globalTextColor))
+                .foregroundColor(Color(user.settings.getGlobalTextColor()))
             Spacer()
             
         })
         .padding(20)
-        .background(Color(globalBackgroundAccent))
+        .background(Color(user.settings.getGlobalBackgroundAccent()))
         if (controller.isSelected(place: place)) {
             /*TranslatedText("Selected")
                 .font(.headline)

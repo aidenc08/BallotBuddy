@@ -9,7 +9,8 @@ import Foundation
 import MapKit
 import CoreLocation
 
-extension CLLocationCoordinate2D: Codable, Hashable {
+extension CLLocationCoordinate2D: @retroactive Equatable {}
+extension CLLocationCoordinate2D: Codable, @retroactive Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(latitude)
         hasher.combine(longitude)

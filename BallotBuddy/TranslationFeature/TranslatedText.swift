@@ -13,14 +13,16 @@ struct TranslatedText: View {
     @EnvironmentObject var user: User
     var sourceText: String
     let sourceLanguage = Locale.Language(identifier: "en-US")
-    init(_ sourceText:String){
+    
+    init(_ sourceText: String) {
         self.sourceText = sourceText
     }
+    
     @State private var targetText: String?
+    
     var body: some View {
         if #available(iOS 18.0, *) {
-            Text(targetText ?? sourceText)
-            /*
+            translatedTextView()
                 .translationTask(
                     source: sourceLanguage,
                     target: user.targetLanguage
@@ -32,13 +34,18 @@ struct TranslatedText: View {
                         // Handle error.
                     }
                 }
-             */
         } else {
             Text(sourceText)
         }
     }
+    
+    // Function to return a Text view that can be used for chaining
+    func translatedTextView() -> Text {
+        Text(targetText ?? sourceText)
+    }
 }
 
 #Preview {
-    TranslatedText("Hello").environmentObject(User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419")))
+    TranslatedText("Hello")
+        .environmentObject(User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419")))
 }

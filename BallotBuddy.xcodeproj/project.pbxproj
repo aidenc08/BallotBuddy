@@ -15,7 +15,6 @@
 		6F517E4A2C7A381C00876772 /* PollUIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E492C7A381C00876772 /* PollUIController.swift */; };
 		6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4B2C7A3C0700876772 /* ListView.swift */; };
 		6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F517E4D2C7A3DD900876772 /* ListItemView.swift */; };
-		6F694FDA2C9022DE002BC461 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F694FD92C9022DE002BC461 /* Theme.swift */; };
 		6F694FDC2C902365002BC461 /* RacesNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F694FDB2C902365002BC461 /* RacesNavigationBar.swift */; };
 		6F694FDE2C9023DB002BC461 /* RaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F694FDD2C9023DB002BC461 /* RaceView.swift */; };
 		6F694FE02C9023E2002BC461 /* CandidateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F694FDF2C9023E2002BC461 /* CandidateView.swift */; };
@@ -76,7 +75,6 @@
 		6F517E492C7A381C00876772 /* PollUIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollUIController.swift; sourceTree = "<group>"; };
 		6F517E4B2C7A3C0700876772 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		6F517E4D2C7A3DD900876772 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
-		6F694FD92C9022DE002BC461 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6F694FDB2C902365002BC461 /* RacesNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacesNavigationBar.swift; sourceTree = "<group>"; };
 		6F694FDD2C9023DB002BC461 /* RaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaceView.swift; sourceTree = "<group>"; };
 		6F694FDF2C9023E2002BC461 /* CandidateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateView.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 		DC913E4A2C7AFF2F00D8AAEF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				6F694FD92C9022DE002BC461 /* Theme.swift */,
 				DC913E462C7AF7C100D8AAEF /* UIColor.swift */,
 			);
 			path = Helpers;
@@ -469,7 +466,6 @@
 				6F517E4C2C7A3C0700876772 /* ListView.swift in Sources */,
 				DC913E492C7AFABC00D8AAEF /* NavigationBar.swift in Sources */,
 				DCC511312CB332AE006FFADC /* LandingView.swift in Sources */,
-				6F694FDA2C9022DE002BC461 /* Theme.swift in Sources */,
 				6FA1B2712C82782000500D68 /* SettingsView.swift in Sources */,
 				6F517E4E2C7A3DD900876772 /* ListItemView.swift in Sources */,
 				6FF651112C7EDFE900B519D9 /* FileUtil.swift in Sources */,

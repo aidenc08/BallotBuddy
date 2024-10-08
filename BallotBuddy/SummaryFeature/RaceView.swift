@@ -10,6 +10,7 @@ import SwiftUI
 struct RaceView: View {
     @Binding var index: Int
     @Binding var races: [Race]
+    @EnvironmentObject var user: User
     var body: some View {
         VStack {
             TabView {
@@ -19,7 +20,7 @@ struct RaceView: View {
             }
             .tabViewStyle(.page)
         }
-        .background(Color(globalBackground))
+        .background(Color(user.settings.getGlobalBackground()))
     }
 }
 

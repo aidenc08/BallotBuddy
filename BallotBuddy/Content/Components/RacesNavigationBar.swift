@@ -9,39 +9,39 @@ import SwiftUI
 
 struct RacesNavigationBar: View {
     @Binding var selectedIndex: Int
-    let items: [RacesNavigationItem]
+    @EnvironmentObject var user: User
+    @EnvironmentObject var controller: FilterButtonController
+    let items: [Race]
     
     var body: some View {
         ScrollView {
-            ForEach(items.indices) { index in
-                Button(action: {
-                    selectedIndex = index
-                }) {
-                    HStack {
-                        //Text(items[index].type)
-                        Text(items[index].title)
-                            .font(.system(size: 15))
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        Spacer()
+            ForEach(Array(items.enumerated()), id: \.offset) { index, i in
+                if (Category.classify(title: i.name, level: i.level, category: controller.selected)) {
+                    Button(action: {
+                        selectedIndex = index
+                    }) {
+                        HStack {
+                            //Text(items[index].type)
+                            TranslatedText(i.name)
+                                .font(.system(size: 15))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                            Spacer()
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .background(selectedIndex == index ? Color(user.settings.getGlobalAccent()) : Color.clear)
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color(selectedIndex == index ? user.settings.getGlobalAccent() : user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                        )
+                        .foregroundColor(selectedIndex == index ? Color.white : Color(user.settings.getGlobalTextColorDark()))
                     }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .background(selectedIndex == index ? Color(globalAccent) : Color.clear)
-                    .cornerRadius(5)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color(selectedIndex == index ? globalAccent : globalTextColorDark), lineWidth: 1)
-                    )
-                    .foregroundColor(selectedIndex == index ? Color.white : Color(globalTextColorDark))
                 }
             }
         }
         .padding(.horizontal)
         // .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
     }
-}
-
-struct RacesNavigationItem {
-    let title: String
 }
 

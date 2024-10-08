@@ -18,6 +18,7 @@ struct MapView: View {
         )) 
     public var zipCode: String
     @EnvironmentObject var controller: PollUIController
+    @EnvironmentObject var user: User
 
     var body: some View {
         VStack {
@@ -28,7 +29,7 @@ struct MapView: View {
                     }, label: {})
                 }
             }
-            .colorScheme(theme ? .light : .dark)
+            .colorScheme(user.settings.theme ? .light : .dark)
             .onAppear {
                 centerMapOnZipCode(zipCode: self.zipCode)  // Example ZIP code
             }
@@ -62,7 +63,7 @@ struct MapView: View {
     }
 }
 #Preview {
-    let user = User(id: 1, name: "GAA", zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+    let user = User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
     let place = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), name: "Place", address: "")
     let place2 = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7754, longitude: -122.4200), name: "Place2", address: "")
     
@@ -77,7 +78,7 @@ struct MapView: View {
 
     let places = [place, place2, place3, place4, place5, place6]
     let controller = PollUIController(pollingPlaces: places)
-    return PollingPlaceView()
+    PollingPlaceView()
         .environmentObject(user)
         .environmentObject(controller)
 }

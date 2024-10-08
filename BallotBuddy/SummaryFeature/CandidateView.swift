@@ -12,8 +12,10 @@ struct CandidateView: View {
     @ObservedObject var candidate: Candidate
     let columns = [GridItem(.adaptive(minimum: 100))]
     @ObservedObject var controller: CandidateTabController
+    @EnvironmentObject var user: User
     let thumbnail: String
     let campaign_url: String
+    @State private var noPolicies = false
     
     init(candidate: Candidate) {
         self.candidate = candidate
@@ -25,72 +27,72 @@ struct CandidateView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                AsyncImage(url: URL(string: thumbnail)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                } placeholder: {
-                    ProgressView()
-                }
-                Spacer().frame(width: 10)
-                Text(candidate.name)
-                    .foregroundStyle(Color(globalTextColor))
-                    .font(.system(size: 20))
-                Link(campaign_url.replacingOccurrences(of: "www.", with: "").replacingOccurrences(of: "https://", with: ""), destination: URL(string: campaign_url)!)
-                    .foregroundStyle(Color(globalTextColor))
-                    .onAppear(perform: updateCandidate)
-                    .padding(.horizontal, 5)
-                    .padding(.vertical, 2)
-                    .cornerRadius(5)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color(globalTextColorDark), lineWidth: 1)
-                    )
-            }
-            if let policies = candidate.policies {
-                ScrollView(.horizontal) {
-                    HStack(spacing: 10) {
-                        ForEach(Array(policies.enumerated()), id: \.element.summary) { index, policy in
-                            CandidateTab(policy: policy, controller: controller)
-                        }
+            VStack {
+                HStack {
+                    AsyncImage(url: URL(string: thumbnail)) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 30, height: 30)
+                            .clipShape(Circle())
+                    } placeholder: {
+                        ProgressView()
                     }
+                    Spacer().frame(width: 10)
+                    Text(candidate.name)
+                        .foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                        .font(.system(size: 20))
+                    Link(campaign_url.replacingOccurrences(of: "www.", with: "").replacingOccurrences(of: "https://", with: ""), destination: (URL(string: campaign_url) ?? URL("https://google.com"))!)
+                        .foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                        .onAppear(perform: updateCandidate)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 2)
+                        .cornerRadius(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                        )
                 }
-                .padding(.horizontal)
-                // access whatever policy you want using p
-                if let p = controller.policy {
-                    VStack {
-                        Spacer().frame(height: 10)
-                        HStack {
-                            Image("icon_ai")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30)
-                            Text("Summarized with AI")
-                                .foregroundStyle(Color(globalTextColorDark))
-                                .onTapGesture {
-                                    showDisclaimer.toggle()
-                                }
-                            Spacer()
+                if let policies = candidate.policies {
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 10) {
+                            ForEach(Array(policies.enumerated()), id: \.element.summary) { index, policy in
+                                CandidateTab(policy: policy, controller: controller)
+                            }
                         }
-                        .sheet(isPresented: $showDisclaimer) {
-                            DisclaimerView(url: formatURL(url: p.url))
-                                .presentationDetents([.height(200)])
-                        }
-                        Text(p.summary)
-                            .foregroundStyle(Color(globalTextColor))
                     }
                     .padding(.horizontal)
+                    // access whatever policy you want using p
+                    if let p = controller.policy {
+                        VStack {
+                            Spacer().frame(height: 10)
+                            HStack {
+                                Image("icon_ai")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 30, height: 30)
+                                TranslatedText("Summarized with AI")
+                                    .foregroundStyle(Color(user.settings.getGlobalTextColorDark()))
+                                    .onTapGesture {
+                                        showDisclaimer.toggle()
+                                    }
+                                Spacer()
+                            }
+                            .sheet(isPresented: $showDisclaimer) {
+                                DisclaimerView(url: formatURL(url: p.url))
+                                    .presentationDetents([.height(200)])
+                            }
+                            TranslatedText(p.summary)
+                                .foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                        }
+                        .padding(.horizontal)
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            else {
-                // handle case when there are no policies (couldn't fetch, etc.)
-            }
-        }.background(Color(uiColor: globalBackground))
+                else {
+                    TranslatedText("Could not find any policies").foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                }
+            }.background(Color(uiColor: user.settings.getGlobalBackground()))
     }
     
     func formatURL(url: String?) -> String {
@@ -105,6 +107,7 @@ struct CandidateView: View {
             await candidate.getPolicies()
             if (candidate.policies == nil || candidate.policies?.count == 0) {
                 controller.policy = nil
+                noPolicies = true
             }
             else {
                 controller.policy = candidate.policies![0]
@@ -115,7 +118,7 @@ struct CandidateView: View {
 
 struct DisclaimerView: View {
     var url: String
-    
+    @EnvironmentObject var user: User
     var body: some View {
         VStack {
             HStack {
@@ -123,17 +126,17 @@ struct DisclaimerView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 30, height: 30)
-                Text("Disclaimer")
+                TranslatedText("Disclaimer")
                     .font(.system(size: 20))
                 Spacer()
             }
-            Text("Summaries are summarized using Google's Gemini-1.5-flash model. The target webpage being summarized is '\(url)'. Note that there may be innaccuracies in the summaries generated by AI.")
+            TranslatedText("Summaries are generated using Google's Gemini-1.5-flash model. The target webpage being summarized is '\(url)'. Note that there may be inaccuracies in the summaries generated by AI.")
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .foregroundColor(Color(globalTextColor))
+        .foregroundColor(Color(user.settings.getGlobalTextColor()))
         .padding()
-        .background(Color(globalBackgroundAccent))
+        .background(Color(user.settings.getGlobalBackgroundAccent()))
     }
 }

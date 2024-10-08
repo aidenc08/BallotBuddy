@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavigationBar: View {
     @Binding var selectedIndex: Int
+    @EnvironmentObject var user: User
     let items: [NavigationItem]
     
     var body: some View {
@@ -21,7 +22,7 @@ struct NavigationBar: View {
                         Image(systemName: items[index].iconName)
                             .font(.system(size: 24))
                             .padding(.top, 6)
-                        Text(items[index].title)
+                        TranslatedText(items[index].title)
                             .font(.caption)
                     }
                     .foregroundColor(selectedIndex == index ? Color(uiColor: UIColor(hex: "EA6461")) : Color.gray)
@@ -29,7 +30,7 @@ struct NavigationBar: View {
                 .frame(maxWidth: .infinity)
             }       
         }
-        .background(Color(uiColor: globalBackgroundAccent)) // Ensure background color fills the padded area
+        .background(Color(uiColor: user.settings.getGlobalBackgroundAccent())) // Ensure background color fills the padded area
         .padding(.horizontal) // Apply horizontal padding to the HStack
         .padding(.bottom, 20) // Set specific bottom padding height
         .padding(.top, 10) // Set specific top padding height
