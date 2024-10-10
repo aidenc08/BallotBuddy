@@ -22,18 +22,23 @@ struct TranslatedText: View {
     
     var body: some View {
         if #available(iOS 18.0, *) {
-            translatedTextView()
-                .translationTask(
-                    source: sourceLanguage,
-                    target: user.targetLanguage
-                ) { session in
-                    do {
-                        let response = try await session.translate(sourceText)
-                        targetText = response.targetText
-                    } catch {
-                        // Handle error.
+            if (user.targetLanguage != sourceLanguage){
+                translatedTextView()
+                    .translationTask(
+                        source: sourceLanguage,
+                        target: user.targetLanguage
+                    ) { session in
+                        do {
+                            let response = try await session.translate(sourceText)
+                            targetText = response.targetText
+                        } catch {
+                            // Handle error.
+                        }
                     }
-                }
+            }
+            else {
+                Text(sourceText)
+            }
         } else {
             Text(sourceText)
         }
