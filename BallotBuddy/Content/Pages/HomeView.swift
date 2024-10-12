@@ -89,4 +89,6 @@ struct HomeView: View {
     let user = User(id: 1, zipcode: "94022", targetLanguage: Locale.Language(identifier: "es-419"))
     HomeView()
         .environmentObject(user)
+        .environmentObject(FilterButtonController())
 }
+

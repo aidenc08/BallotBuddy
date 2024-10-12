@@ -52,10 +52,11 @@ struct MainContentView: View {
     }
 }
 
-/*
 
 #Preview {
-    let user = User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+    @State var a = false
+    // let user = User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "es-419"))
+    let user = User(id: 1, zipcode: "94016", targetLanguage: Locale.Language(identifier: "en-US"))
     let place = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), name: "Place", address: "")
     let place2 = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7754, longitude: -122.4200), name: "Place2", address: "")
     
@@ -70,10 +71,8 @@ struct MainContentView: View {
 
     let places = [place, place2, place3, place4, place5, place6]
     let controller = PollUIController(pollingPlaces: places)
-    MainContentView()
+    MainContentView(onLanding: $a)
         .environmentObject(user)
         .environmentObject(controller)
     
 }
-
-*/

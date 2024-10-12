@@ -6,7 +6,17 @@
 //
 
 import SwiftUI
+import Foundation
+import Translation // Ensure to import the Translation framework
 
+@available(iOS 18.0, *)
+func fetchSupportedLanguages() async throws -> [Locale.Language] {
+    let languageAvailability = LanguageAvailability()
+    let supportedLanguages = try await languageAvailability.supportedLanguages
+    return supportedLanguages
+}
+
+@available(iOS 18.0, *)
 struct LandingView: View {
     @State var onLanding: Bool
     @State private var zipCode: String = ""
@@ -19,7 +29,7 @@ struct LandingView: View {
             self.user = User()
         }
         else {
-            self.onLanding = false
+            self.onLanding = true
             self.user = user!
         }
     }
@@ -58,7 +68,9 @@ struct LandingView: View {
                             )
                     }
                     .padding(.horizontal, 20)
-                    Spacer().frame(height: 20)
+                    Spacer().frame(height: 10)
+                    DropdownMenuView(user: self.user)
+                    Spacer().frame(height: 10)
                     HStack {
                         Button(action: {
                             user.zipcode = self.zipCode
@@ -68,7 +80,7 @@ struct LandingView: View {
                             Text("Continue")
                                 .padding(.horizontal)
                                 .padding(.vertical, 10)
-                                .foregroundColor(Color(user.settings.getGlobalTextColor()))
+                                .foregroundColor(Color.white)
                                 .background(Color(user.settings.getGlobalAccent()))
                                 .cornerRadius(5)
                                 .overlay(
@@ -109,7 +121,73 @@ struct LandingView: View {
     }
 }
 
+extension Locale.Language {
+    var localizedName: String {
+        return Locale.current.localizedString(forLanguageCode: languageCode?.identifier ?? "") ?? "Unknown Language"
+    }
+}
 
+@available(iOS 18.0, *)
+struct DropdownMenuView: View {
+    @State private var selectedOption = "Select an option"
+    @State private var showMenu = false
+    @State var user: User
+    @State private var options: [Locale.Language] = []
+
+    func loadLanguages() {
+        Task {
+            do {
+                options = try await fetchSupportedLanguages()
+            } catch {
+                print("Failed to fetch languages: \(error)")
+            }
+        }
+    }
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                showMenu.toggle()
+            }) {
+                HStack {
+                    Text(selectedOption)
+                        .foregroundColor(Color(user.settings.getGlobalTextColor()))
+                    Spacer()
+                    Image(systemName: showMenu ? "chevron.up" : "chevron.down")
+                }
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                )
+            }
+
+            if showMenu {
+                ScrollView {
+                    ForEach(options, id: \.self) { option in
+                        Button(action: {
+                            selectedOption = option.localizedName
+                            showMenu = false
+                        }) {
+                            Text(option.localizedName)
+                                .foregroundColor(Color(user.settings.getGlobalTextColor()))
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                                )
+                        }
+                    }
+                }
+                .frame(maxHeight: 200)
+            }
+        }
+        .padding()
+    }
+}
+
+@available(iOS 18.0, *)
 #Preview {
     LandingView()
 }
