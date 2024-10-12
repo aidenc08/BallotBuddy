@@ -16,6 +16,9 @@ struct CandidateView: View {
     let thumbnail: String
     let campaign_url: String
     @State private var noPolicies = false
+    var url: String {
+        return campaign_url.replacingOccurrences(of: "www.", with: "").replacingOccurrences(of: "https://", with: "")
+    }
     
     init(candidate: Candidate) {
         self.candidate = candidate
@@ -42,7 +45,7 @@ struct CandidateView: View {
                     Text(candidate.name)
                         .foregroundStyle(Color(user.settings.getGlobalTextColor()))
                         .font(.system(size: 20))
-                    Link(campaign_url.replacingOccurrences(of: "www.", with: "").replacingOccurrences(of: "https://", with: ""), destination: (URL(string: campaign_url) ?? URL("https://google.com"))!)
+                    Link(url != "" ? url : "N/A", destination: (URL(string: campaign_url) ?? URL("https://google.com"))!)
                         .foregroundStyle(Color(user.settings.getGlobalTextColor()))
                         .onAppear(perform: updateCandidate)
                         .padding(.horizontal, 5)
@@ -91,6 +94,7 @@ struct CandidateView: View {
                 }
                 else {
                     TranslatedText("Could not find any policies").foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                    Spacer()
                 }
             }.background(Color(uiColor: user.settings.getGlobalBackground()))
     }

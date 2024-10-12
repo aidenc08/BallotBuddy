@@ -34,6 +34,7 @@ struct ContentView: View {
             LandingView()
         } else {
             // Fallback on earlier versions
+            LandingViewNoTranslation()
         }
 
     }

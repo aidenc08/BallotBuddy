@@ -9,15 +9,8 @@ import SwiftUI
 import Foundation
 import Translation // Ensure to import the Translation framework
 
-@available(iOS 18.0, *)
-func fetchSupportedLanguages() async throws -> [Locale.Language] {
-    let languageAvailability = LanguageAvailability()
-    let supportedLanguages = try await languageAvailability.supportedLanguages
-    return supportedLanguages
-}
 
-@available(iOS 18.0, *)
-struct LandingView: View {
+struct LandingViewNoTranslation: View {
     @State var onLanding: Bool
     @State private var zipCode: String = ""
     @State private var user: User
@@ -47,7 +40,7 @@ struct LandingView: View {
                     .padding()
                 */
                 VStack {
-                    Spacer().frame(height: 280)
+                    Spacer().frame(height: 380)
                     TabView(selection: $currentPage) {
                         ForEach(0..<images.count, id: \.self) { index in
                             Image(images[index])
@@ -66,6 +59,19 @@ struct LandingView: View {
                             currentPage = (currentPage + 1) % images.count
                         }
                     }
+                }
+                
+                VStack {
+                    Spacer().frame(height: 70)
+                    Text("Translate feature only supported on IOS 18+")
+                        .foregroundColor(Color(user.settings.getGlobalAccent()))
+                        .padding()
+                        .background(Color(user.settings.getGlobalAccent()).opacity(0.1))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color(user.settings.getGlobalAccent()), lineWidth: 1)
+                        )
+                    Spacer()
                 }
                 VStack {
                     Spacer()
@@ -91,8 +97,6 @@ struct LandingView: View {
                             )
                     }
                     .padding(.horizontal, 20)
-                    Spacer().frame(height: 10)
-                    DropdownMenuView(user: self.user)
                     Spacer().frame(height: 10)
                     HStack {
                         Button(action: {
@@ -146,77 +150,6 @@ struct LandingView: View {
     let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
 }
 
-extension Locale.Language {
-    var localizedName: String {
-        return Locale.current.localizedString(forLanguageCode: languageCode?.identifier ?? "") ?? "Unknown Language"
-    }
-}
-
-@available(iOS 18.0, *)
-struct DropdownMenuView: View {
-    @State private var selectedOption = "Select an option"
-    @State private var showMenu = false
-    @State var user: User
-    @State private var options: [Locale.Language] = []
-    
-    func loadLanguages() {
-        print("gh")
-        Task {
-            do {
-                options = try await fetchSupportedLanguages()
-            } catch {
-                print("Failed to fetch languages: \(error)")
-            }
-        }
-    }
-
-    var body: some View {
-        VStack {
-            Button(action: {
-                showMenu.toggle()
-            }) {
-                HStack {
-                    Text(selectedOption)
-                        .foregroundColor(Color(user.settings.getGlobalTextColor()))
-                    Spacer()
-                    Image(systemName: showMenu ? "chevron.up" : "chevron.down")
-                }
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
-                )
-            }
-
-            if showMenu {
-                ScrollView {
-                    ForEach(options, id: \.self) { option in
-                        Button(action: {
-                            selectedOption = option.localizedName
-                            showMenu = false
-                        }) {
-                            Text(option.localizedName)
-                                .foregroundColor(Color(user.settings.getGlobalTextColor()))
-                                .padding(10)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
-                                )
-                        }
-                    }
-                }
-                .frame(maxHeight: 200)
-            }
-        }
-        .padding(20)
-        .onAppear {
-            loadLanguages()
-        }
-    }
-}
-
-@available(iOS 18.0, *)
 #Preview {
-    LandingView()
+    LandingViewNoTranslation()
 }
