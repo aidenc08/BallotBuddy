@@ -30,7 +30,11 @@ struct ContentView: View {
     }
 
     var body: some View {
-        LandingView()
+        if #available(iOS 18.0, *) {
+            LandingView()
+        } else {
+            // Fallback on earlier versions
+        }
 
     }
 }
