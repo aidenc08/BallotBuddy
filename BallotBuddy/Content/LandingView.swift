@@ -22,6 +22,7 @@ struct LandingView: View {
     @State private var zipCode: String = ""
     @State private var user: User
     @State private var currentPage = 0
+    @State private var validZip: Bool = true;
     let images = ["s1", "s2", "s3", "s4"]
     
     init() {
@@ -87,7 +88,7 @@ struct LandingView: View {
                             .foregroundColor(Color(user.settings.getGlobalTextColorDark()))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 4)
-                                    .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                                    .stroke(Color(validZip ? user.settings.getGlobalTextColorDark() : user.settings.getGlobalAccent()), lineWidth: 1)
                             )
                     }
                     .padding(.horizontal, 20)
