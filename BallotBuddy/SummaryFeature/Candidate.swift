@@ -7,6 +7,11 @@
 
 import Foundation
 
+class CampaignURLResponse: Codable {
+    var type: Int
+    var url: String
+}
+
 class Candidate: Codable, ObservableObject {
     var party: String
     var name: String
@@ -33,7 +38,8 @@ class Candidate: Codable, ObservableObject {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.party = try container.decode(String.self, forKey: .party)
         self.name = try container.decode(String.self, forKey: .name)
-        self.campaign_url = try container.decodeIfPresent(String.self, forKey: .campaign_url)
+        let temp = try container.decodeIfPresent(CampaignURLResponse.self, forKey: .campaign_url)
+        self.campaign_url = temp?.url
         self.thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail)
         
         // Manually decode the policies property
