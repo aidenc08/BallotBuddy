@@ -38,8 +38,14 @@ class Candidate: Codable, ObservableObject {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.party = try container.decode(String.self, forKey: .party)
         self.name = try container.decode(String.self, forKey: .name)
-        let temp = try container.decodeIfPresent(CampaignURLResponse.self, forKey: .campaign_url)
-        self.campaign_url = temp?.url
+        do {
+            let temp = try container.decodeIfPresent(CampaignURLResponse.self, forKey: .campaign_url)
+            self.campaign_url = temp?.url
+        }
+        catch {
+            self.campaign_url = try container.decodeIfPresent(String.self, forKey: .campaign_url)
+        }
+        
         self.thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail)
         
         // Manually decode the policies property

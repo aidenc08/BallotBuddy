@@ -33,7 +33,7 @@ struct LandingView: View {
             self.user = User()
         }
         else {
-            self.onLanding = true
+            self.onLanding = false
             self.user = user!
         }
     }
@@ -145,6 +145,7 @@ struct LandingView: View {
     
     func save() -> Void {
         Task {
+            self.validZip = true
             self.validZip = (await user.checkValidZipCode(zip: zipCode))
             if (validZip) {
                 user.zipcode = self.zipCode
