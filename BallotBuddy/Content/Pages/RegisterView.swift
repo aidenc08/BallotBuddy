@@ -30,8 +30,13 @@ struct RegisterView: View {
             VStack {
                 Spacer()
                     .frame(maxHeight: 70)
-                TranslatedText("Lets get started!")
-                    .font(.system(size: 20))
+                HStack {
+                    TranslatedText("Lets get started!")
+                    Spacer()
+                }
+                    .fontWeight(.bold)
+                    .font(.system(size: 25))
+                    .padding(.horizontal)
                 ScrollView {
                     QuestionItem(question: "Are you a US citizen?", index: 0, questionResponses: $questionResponses)
                     QuestionItem(question: "Do you currently live in the US?", index: 1, questionResponses: $questionResponses)

@@ -23,7 +23,7 @@ struct LandingView: View {
     @State private var user: User
     @State private var currentPage = 0
     @State private var validZip: Bool = true;
-    let images = ["s1", "s2", "s3", "s4"]
+    let images = ["introslide1", "introslide2", "introslide3", "s4"]
     
     init() {
         let user = DataModel.getUser()
