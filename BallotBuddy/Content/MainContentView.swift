@@ -13,7 +13,14 @@ struct MainContentView: View {
     @Binding var onLanding: Bool
     @State var selectedIndex = 0
     @EnvironmentObject var user: User
-    var controller: PollUIController = PollUIController(pollingPlaces: [])
+    var controller: PollUIController = PollUIController(pollingPlaces: [
+        PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.393240, longitude: -122.113450), name: "Los Altos Youth Center", address: "1 N San Antonio Road, Los Altos, CA 94022"),
+        PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.383610, longitude: -122.138690), name: "Los Altos Hills Town Hall - City Clerk Office", address: "26379 Fremont Road, Los Altos Hills, CA 94022"),
+        PollingPlace(id: UUID(),
+                     location: CLLocationCoordinate2D(latitude: 37.392670, longitude: -122.123190), name: "The Terraces at Los Altos", address: "373 Pine Ln, Los Altos, CA 94022"),
+        PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.380380, longitude: -122.110760), name: "Los Altos Library", address: "13 South San Antonio Road, Los Altos, CA 94022"),
+        PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.358460, longitude: -122.129210), name: "Foothill College", address: "12345 El Monte Road Los Altos Hills, CA 94022")
+    ])
     
     var body: some View {
         if onLanding  {

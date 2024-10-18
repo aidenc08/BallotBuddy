@@ -23,6 +23,7 @@ struct ListItemView: View {
                         .shadow(radius: 5)
                 )*/
                 .foregroundColor(Color(user.settings.getGlobalTextColor()))
+                .environmentObject(user)
             Spacer()
             
         })
@@ -50,5 +51,5 @@ struct ListItemView: View {
 
 #Preview {
     let place = PollingPlace(id: UUID(), location: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), name: "Place", address: "")
-    return ListItemView(place: place).environmentObject(PollUIController(pollingPlaces: [place]))
+    ListItemView(place: place).environmentObject(PollUIController(pollingPlaces: [place])).environmentObject(User())
 }

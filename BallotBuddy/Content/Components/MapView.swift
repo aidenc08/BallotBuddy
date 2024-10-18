@@ -26,6 +26,7 @@ struct MapView: View {
                 ForEach(controller.pollingPlaces) { annotation in
                     Annotation(coordinate: annotation.location, anchor: .center, content: {
                         MapMarkerView(place: annotation)
+                            .environmentObject(user)
                     }, label: {})
                 }
             }
