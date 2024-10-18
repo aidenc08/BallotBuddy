@@ -15,6 +15,7 @@ struct LandingViewNoTranslation: View {
     @State private var zipCode: String = ""
     @State private var user: User
     @State private var currentPage = 0
+    @State private var validZip = true
     let images = ["s1", "s2", "s3", "s4"]
     
     init() {
@@ -24,7 +25,7 @@ struct LandingViewNoTranslation: View {
             self.user = User()
         }
         else {
-            self.onLanding = true
+            self.onLanding = false
             self.user = user!
         }
     }
@@ -93,16 +94,14 @@ struct LandingViewNoTranslation: View {
                             .foregroundColor(Color(user.settings.getGlobalTextColorDark()))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 4)
-                                    .stroke(Color(user.settings.getGlobalTextColorDark()), lineWidth: 1)
+                                    .stroke(Color(validZip ? user.settings.getGlobalTextColorDark() : user.settings.getGlobalAccent()), lineWidth: 1)
                             )
                     }
                     .padding(.horizontal, 20)
                     Spacer().frame(height: 10)
                     HStack {
                         Button(action: {
-                            user.zipcode = self.zipCode
-                            DataModel.saveUser(u: user)
-                            onLanding = false
+                            save()
                         }){
                             Text("Continue")
                                 .padding(.horizontal)
@@ -131,6 +130,19 @@ struct LandingViewNoTranslation: View {
                 .environmentObject(user)
                 .onChange(of: onLanding, checkUserExistence)
         }
+    }
+    
+    func save() -> Void {
+        Task {
+            self.validZip = true
+            self.validZip = (await user.checkValidZipCode(zip: zipCode))
+            if (validZip) {
+                user.zipcode = self.zipCode
+                DataModel.saveUser(u: user)
+                onLanding = false
+            }
+        }
+        
     }
     func checkUserExistence(original: Bool, new: Bool) -> Void {
         if (new == false) {
