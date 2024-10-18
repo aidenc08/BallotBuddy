@@ -23,6 +23,7 @@ struct LandingView: View {
     @State private var user: User
     @State private var currentPage = 0
     @State private var validZip: Bool = true;
+    @State private var selectedLang = Locale.Language(identifier: "en-US")
     let images = ["introslide1", "introslide2", "introslide3", "s4"]
     
     init() {
@@ -32,7 +33,7 @@ struct LandingView: View {
             self.user = User()
         }
         else {
-            self.onLanding = true
+            self.onLanding = false
             self.user = user!
         }
     }
@@ -93,13 +94,11 @@ struct LandingView: View {
                     }
                     .padding(.horizontal, 20)
                     Spacer().frame(height: 10)
-                    DropdownMenuView(user: self.user)
+                    DropdownMenuView(selectedOption: $selectedLang, user: self.user)
                     Spacer().frame(height: 10)
                     HStack {
                         Button(action: {
-                            user.zipcode = self.zipCode
-                            DataModel.saveUser(u: user)
-                            onLanding = false
+                            save()
                         }){
                             Text("Continue")
                                 .padding(.horizontal)
@@ -143,6 +142,19 @@ struct LandingView: View {
             self.user = u!
         }
     }
+    func save() -> Void {
+        Task {
+            self.validZip = true
+            self.validZip = (await user.checkValidZipCode(zip: zipCode))
+            if (validZip) {
+                user.zipcode = self.zipCode
+                user.targetLanguage = self.selectedLang
+                DataModel.saveUser(u: user)
+                onLanding = false
+            }
+        }
+        
+    }
     
     let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
 }
@@ -155,7 +167,7 @@ extension Locale.Language {
 
 @available(iOS 18.0, *)
 struct DropdownMenuView: View {
-    @State private var selectedOption = "Select an option"
+    @Binding var selectedOption: Locale.Language
     @State private var showMenu = false
     @State var user: User
     @State private var options: [Locale.Language] = []
@@ -177,7 +189,7 @@ struct DropdownMenuView: View {
                 showMenu.toggle()
             }) {
                 HStack {
-                    Text(selectedOption)
+                    Text(selectedOption.localizedName)
                         .foregroundColor(Color(user.settings.getGlobalTextColor()))
                     Spacer()
                     Image(systemName: showMenu ? "chevron.up" : "chevron.down")
@@ -193,7 +205,7 @@ struct DropdownMenuView: View {
                 ScrollView {
                     ForEach(options, id: \.self) { option in
                         Button(action: {
-                            selectedOption = option.localizedName
+                            selectedOption = option
                             showMenu = false
                         }) {
                             Text(option.localizedName)
