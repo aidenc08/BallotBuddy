@@ -27,9 +27,17 @@ class User: Codable, Identifiable, ObservableObject {
     init() {
         self.id = 0
         self.zipcode = ""
-        self.targetLanguage = Locale.Language(identifier: "es-419")
+        self.targetLanguage = Locale.Language(identifier: "en-US")
         self.settings = SettingsObject()
     }
+    
+    init(id: Int, zipcode: String, targetLanguage: Locale.Language, settings: SettingsObject) {
+        self.id = id
+        self.zipcode = zipcode
+        self.targetLanguage = targetLanguage
+        self.settings = settings
+    }
+    
     
     func checkValidZipCode(zip: String) async -> Bool {
         return await DataModel.checkValidZipCode(zip: zip)

@@ -10,6 +10,7 @@ import CoreLocation
 
 struct MapMarkerView: View {
     @EnvironmentObject var controller: PollUIController
+    @EnvironmentObject var user: User
     public var place: PollingPlace
     var body: some View {
         VStack(spacing: 0) {
@@ -22,6 +23,7 @@ struct MapMarkerView: View {
                 .font(.caption)
                 .padding(5)
                 .background(Color.white)
+                .foregroundStyle(Color(user.settings.getGlobalTextColorDark()))
                 .cornerRadius(8)
                 .shadow(radius: 3)
         }
