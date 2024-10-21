@@ -85,8 +85,11 @@ struct CandidateView: View {
                                 DisclaimerView(url: formatURL(url: p.url))
                                     .presentationDetents([.height(200)])
                             }
-                            TranslatedText(p.summary)
-                                .foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                            ScrollView{
+                                TranslatedText(p.summary)
+                                    .foregroundStyle(Color(user.settings.getGlobalTextColor()))
+                            }
+
                         }
                         .padding(.horizontal)
                     }

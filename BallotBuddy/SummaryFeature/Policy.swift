@@ -16,9 +16,9 @@ class Policy: Codable, Equatable {
     var summary: String
     var url: String?
     
-    init(category: String, summary: String) {
+    init(category: String, summary: String, url: String?) {
         self.category = category
         self.summary = summary
-        self.url = nil
+        self.url = url
     }
 }

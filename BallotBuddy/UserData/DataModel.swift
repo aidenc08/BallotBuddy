@@ -61,7 +61,8 @@ struct DataModel {
         return []
     }
     
-    static func getPolicies(url: String) async -> [Policy] {
+    static func getPolicies(url: String, curl: String) async -> [Policy] {
+        let summaryPolicyName = "Biography"
         let firstSubstringToRemove = "https://"
         let secondSubstringToRemove = "www."
         let thirdSubstringToRemove = ".com/"
@@ -72,12 +73,16 @@ struct DataModel {
         }
         else {
             do {
-                let data = try await RequestsUtil.getPolicies(url: url)
-                if (data.count == 0) {
+                let data = try await RequestsUtil.getPolicies(url: url, curl: curl)
+                if (data == nil) {
                     return []
                 }
-                var policies: [Policy] = []
-                for p in data {
+                var policies: [Policy] = [Policy(category: summaryPolicyName, summary: data!.summary, url: curl)]
+                if (data!.policies.count == 0) {
+                    DataModel.savePolicies(url: modifiedUrl, policies: policies)
+                    return policies
+                }
+                for p in data!.policies {
                     for policy in p.summary {
                         policy.url = p.url
                         policies.append(policy)
