@@ -72,7 +72,7 @@ struct FileUtil {
             return user
         }
         catch {
-            print("Read Failed")
+            print("Read Failed of " + fileName)
         }
         return nil
     }

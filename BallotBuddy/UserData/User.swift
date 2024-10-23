@@ -26,7 +26,7 @@ class User: Codable, Identifiable, ObservableObject {
     
     init() {
         self.id = 0
-        self.zipcode = ""
+        self.zipcode = "94022"
         self.targetLanguage = Locale.Language(identifier: "en-US")
         self.settings = SettingsObject()
     }

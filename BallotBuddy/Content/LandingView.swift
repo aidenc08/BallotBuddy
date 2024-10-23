@@ -27,7 +27,7 @@ struct LandingView: View {
     let images = ["introslide1", "introslide2", "introslide3", "s4"]
     
     init() {
-        let user = DataModel.getUser()
+        /*let user = DataModel.getUser()
         if (user == nil) {
             self.onLanding = true
             self.user = User()
@@ -36,6 +36,9 @@ struct LandingView: View {
             self.onLanding = false
             self.user = user!
         }
+         */
+        self.user = User()
+        self.onLanding = false
     }
     
     var body: some View {

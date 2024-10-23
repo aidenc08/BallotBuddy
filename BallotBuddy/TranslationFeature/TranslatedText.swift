@@ -32,7 +32,7 @@ struct TranslatedText: View {
                             let response = try await session.translate(sourceText)
                             targetText = response.targetText
                         } catch {
-                            // Handle error.
+                            targetText = sourceText
                         }
                     }
             }

@@ -62,10 +62,10 @@
             filePath = "BallotBuddy/Content/LandingView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "Locale.Language"
-            landmarkType = "21">
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "localizedName"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4BD4FF55-5776-45D2-96C8-CBE7AE35D1B9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallotBuddy/Content/Components/ListItemView.swift"
@@ -136,7 +136,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "50C16506-BE60-419F-ABB0-1376D8E8DDD8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BallotBuddy/TranslationFeature/TranslatedText.swift"
